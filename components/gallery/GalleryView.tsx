@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { SlidersHorizontal, LayoutGrid, RectangleHorizontal } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 const GALLERY_DATA = [
   {
@@ -19,8 +19,8 @@ const GALLERY_DATA = [
   }
 ];
 
-// Ultra-smooth, elegant entry orchestrations
-const containerVariants = {
+// Explicitly typing variants stops the generic string type inference error
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
@@ -31,7 +31,7 @@ const containerVariants = {
   }
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 40 },
   show: { 
     opacity: 1, 
@@ -132,11 +132,6 @@ export default function GalleryView() {
                 <motion.div
                   key={img.id}
                   variants={itemVariants}
-                  /* 
-                    Using layout="position" is the secret sauce here. 
-                    It tells framer-motion to transition the physical X/Y placement coordinates smoothly 
-                    without scaling or bending the bounding boxes artificially, stopping image warp completely.
-                  */
                   layout="position"
                   className="w-full relative overflow-hidden rounded-[24px] bg-zinc-50 border border-zinc-100/60 shadow-sm group"
                   transition={{
