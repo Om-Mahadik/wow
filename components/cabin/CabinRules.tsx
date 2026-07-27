@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { motion } from "framer-motion";
 
 export default function CabinRules() {
@@ -8,15 +9,31 @@ export default function CabinRules() {
   const rules = [
     {
       num: "1",
-      text: "Keep noise to a minimum between 10:00 PM and 7:00 AM.",
+      text: "Please treat the Coons and surroundings with care—as it's in a peaceful, remote location.",
     },
     {
       num: "2",
-      text: "Turn off the AC, lights, and geyser when leaving your cabin.",
+      text: "Responsible Stay, Respect the locals.",
     },
     {
       num: "3",
-      text: "Only registered guests are allowed overnight and please treat the space with care.",
+      text: "Quiet hours - 10 pm to 7 am.",
+    },
+    {
+      num: "4",
+      text: "No pets allowed on the property.",
+    },
+    {
+      num: "5",
+      text: "Zero waste property. Please plan to leave no trace behind.",
+    },
+    {
+      num: "6",
+      text: "Venture into the Varasgaon backwaters at your own risk.",
+    },
+    {
+      num: "7",
+      text: "Check-in from 1:00 PM to 7:00 PM, checkout by 11:00 AM. Up to 3 guests per cabin. This is a self-check-in property, so you'll have complete privacy — our team is just a call away if you need anything.",
     },
   ];
 
@@ -42,13 +59,24 @@ export default function CabinRules() {
         {/* Split Grid System */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           
-          {/* LEFT SIDE PANEL - Title Only */}
-          <div className="lg:col-span-5 lg:sticky lg:top-20">
+          {/* LEFT SIDE PANEL */}
+          <div className="lg:col-span-5 lg:sticky lg:top-20 space-y-6">
             <div className="overflow-hidden py-0.5">
               <motion.h2 variants={itemVariants} className="text-2xl font-bold tracking-tight text-zinc-900">
-                Rules & Ethics
+                House Rules
               </motion.h2>
             </div>
+
+            {/* Added Discount Notice Box */}
+            <motion.div 
+              variants={itemVariants}
+              className="p-6 rounded-[28px] bg-zinc-50 border border-zinc-200/60 space-y-2 max-w-sm"
+            >
+              <h4 className="text-xs font-bold tracking-wider uppercase text-emerald-600">Added Discount!</h4>
+              <p className="text-sm text-zinc-500 font-light leading-relaxed">
+                This is a Zero waste property... take back your trash before checkout and message us directly or on the airbnb App. We'll thank you with ten percent off on your next stay.
+              </p>
+            </motion.div>
           </div>
 
           {/* RIGHT SIDE PANEL - Clean List */}
@@ -57,15 +85,15 @@ export default function CabinRules() {
               <motion.div
                 key={i}
                 variants={itemVariants}
-                className="flex items-center gap-6 group"
+                className="flex items-start gap-6 group"
               >
                 {/* Large Soft Numeric Circle Badge */}
-                <div className="w-14 h-14 rounded-full bg-zinc-100 flex items-center justify-center text-zinc-900 font-medium text-lg shrink-0 transition-colors duration-300 group-hover:bg-zinc-900 group-hover:text-white">
+                <div className="w-12 h-12 rounded-full bg-zinc-100 flex items-center justify-center text-zinc-900 font-medium text-base shrink-0 transition-colors duration-300 group-hover:bg-zinc-900 group-hover:text-white mt-0.5">
                   {rule.num}
                 </div>
                 
                 {/* Rule Description Text */}
-                <p className="text-base md:text-lg text-zinc-600 font-normal leading-relaxed tracking-wide group-hover:text-zinc-950 transition-colors duration-300 max-w-xl">
+                <p className="text-base md:text-lg text-zinc-500 font-light leading-snug tracking-wide group-hover:text-zinc-950 transition-colors duration-300 max-w-xl">
                   {rule.text}
                 </p>
               </motion.div>

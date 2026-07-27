@@ -20,6 +20,22 @@ const InstagramIcon = () => (
   </svg>
 );
 
+const WhatsappIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="22"
+    height="22"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+  </svg>
+);
+
 const YoutubeIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -73,17 +89,29 @@ export default function Footer() {
         <div className="w-full max-w-5xl mx-auto flex flex-col items-center">
           
           {/* Main Hook Description */}
-          <p className="text-zinc-300 text-sm md:text-base font-normal leading-relaxed text-center max-w-lg mb-10 tracking-wide">
-            Your premium off-the-grid staycation.<br />
-            Swap the city noise for a cozy cabin retreat surrounded by the wild.
+          <p className="text-zinc-300 text-lg md:text-xl font-light leading-relaxed text-center max-w-lg mb-6 tracking-wide">
+            Ready to disconnect? Wind Over Waters is waiting.
           </p>
 
-          {/* Social Links Panel */}
+          {/* Premium Action Button */}
+          <Link 
+            href="/book" 
+            className="mb-12 px-8 py-3 rounded-full bg-white text-black font-semibold tracking-wide text-sm hover:bg-zinc-200 transition-colors duration-300 shadow-sm"
+          >
+            Book Now
+          </Link>
+
+          {/* Quick Links / Social Links Panel */}
           <div className="flex flex-col items-center gap-3 mb-20">
-            <span className="text-zinc-600 font-medium tracking-widest text-xs uppercase">Follow Us</span>
-            <div className="flex items-center gap-5 text-zinc-500">
-              <Link href="#" className="hover:text-zinc-200 transition-colors" aria-label="Instagram">
+            <span className="text-zinc-600 font-semibold tracking-widest text-xs uppercase">Quick Links</span>
+            <div className="flex items-center gap-6 text-zinc-500">
+              <Link href="#" className="hover:text-zinc-200 transition-colors flex items-center gap-2" aria-label="Instagram">
                 <InstagramIcon />
+                <span className="text-xs tracking-wider hidden sm:inline">Instagram</span>
+              </Link>
+              <Link href="#" className="hover:text-zinc-200 transition-colors flex items-center gap-2" aria-label="Contact via WhatsApp">
+                <WhatsappIcon />
+                <span className="text-xs tracking-wider hidden sm:inline">Contact WhatsApp</span>
               </Link>
               <Link href="#" className="hover:text-zinc-200 transition-colors" aria-label="YouTube">
                 <YoutubeIcon />
@@ -94,7 +122,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Columns Grid System - Modified to show side-by-side grid-cols-2 on mobile */}
+          {/* Columns Grid System */}
           <div className="w-full grid grid-cols-2 md:grid-cols-5 gap-y-12 gap-x-6 md:gap-4 items-start mb-24">
             
             {/* Left Column: Explore Directory */}
@@ -116,17 +144,17 @@ export default function Footer() {
                 <li><Link href="/book" className="hover:text-white transition-colors">Book a Stay</Link></li>
                 <li><Link href="/faqs" className="hover:text-white transition-colors">FAQs</Link></li>
                 <li><Link href="/cancellation" className="hover:text-white transition-colors">Cancellation</Link></li>
-                <li><Link href="/rules" className="hover:text-white transition-colors">Rules Regulations</Link></li>
+                <li><Link href="/rules" className="hover:text-white transition-colors">Rules & Regulations</Link></li>
                 <li><Link href="/contact" className="hover:text-white transition-colors">Contact Us</Link></li>
               </ul>
             </div>
 
-            {/* Structural Column Divider Line (Hidden on Mobile) */}
+            {/* Structural Column Divider Line */}
             <div className="hidden md:flex md:col-span-1 justify-center items-center h-full py-2">
               <div className="w-[1px] h-32 bg-zinc-800/60" />
             </div>
 
-            {/* Right Side Columns: Newsletter Dynamic Module spanning full grid width on mobile */}
+            {/* Right Side Columns: Newsletter Dynamic Module */}
             <div className="col-span-2 md:col-span-2 flex flex-col items-center md:items-start gap-4 md:pr-8 mt-4 md:mt-0">
               <h3 className="text-zinc-200 font-medium tracking-wide text-sm text-center md:text-left w-full">
                 Get Off the Grid
@@ -148,10 +176,16 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Legal Policies Anchor Links */}
-          <div className="w-full flex items-center justify-center gap-10 text-zinc-600 text-xs font-normal mb-16">
-            <Link href="/privacy" className="hover:text-zinc-400 transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-zinc-400 transition-colors">Terms of Service</Link>
+          {/* Legal Policies & Product Credit Anchor Links */}
+          <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-6 border-t border-zinc-900 pt-8 mb-8 text-zinc-600 text-xs font-normal px-2">
+            <div className="flex gap-8">
+              <Link href="/legal/privacy" className="hover:text-zinc-400 transition-colors">Privacy Policy</Link>
+              <Link href="/legal/terms" className="hover:text-zinc-400 transition-colors">Terms of Service</Link>
+            </div>
+            {/* Spec-Defined Corporate Architectural Credit Line */}
+            <div className="tracking-wide text-zinc-500">
+              cabins by <a href="https://thecoonco.com" target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-zinc-300 underline underline-offset-4 transition-colors">The Coon Co.</a>
+            </div>
           </div>
 
           {/* Bottom Copyright Standard Mark */}

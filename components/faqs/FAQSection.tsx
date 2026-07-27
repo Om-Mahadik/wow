@@ -1,11 +1,13 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence, TargetAndTransition, Variants } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
+  const smoothEase = [0.25, 1, 0.5, 1] as const;
+  
   const fluidSpring = {
     type: "spring" as const,
     stiffness: 240,
@@ -15,22 +17,78 @@ export default function FAQSection() {
 
   const faqs = [
     {
-      question: "What are the check-in and check-out timings?",
-      answer: "Check-in is at 1:00 PM, and check-out is at 11:00 AM. This gives our team enough time to perfectly prepare the space for the next guest.",
+      question: "What kind of property is this?",
+      answer: "Two prefab tiny cabins (\"Coons\"), built by The Coon Co. and installed on-site, nestled into the forest along the Varasgaon backwaters.",
     },
     {
-      question: "What is your cancellation policy?",
-      answer: "Cancellations made up to 7 days before your arrival date will receive a full refund. Bookings canceled within 7 days of the check-in date are non-refundable.",
+      question: "Is this a hotel?",
+      answer: "No — it's a glamping experience, closer to stylish camping than a hotel stay.",
     },
     {
-      question: "Are the architectural units air-conditioned?",
-      answer: "Yes, all our luxury container units are equipped with fully integrated high-capacity air conditioning systems to keep your stay perfectly climate-controlled.",
+      question: "Is there Wi-Fi/network coverage?",
+      answer: "Mobile network can be spotty; the property has Jio coverage and inverter backup for power cuts.",
     },
     {
-      question: "Is there cellular network or Wi-Fi on the property?",
-      answer: "High-speed mesh Wi-Fi covers the property grounds seamlessly. Cellular coverage depends on your network provider, but general connectivity remains reliable.",
+      question: "Is there a TV?",
+      answer: "No — the property is designed for disconnecting and immersing in nature.",
+    },
+    {
+      question: "What's the check-in/checkout time?",
+      answer: "Check-in 1 PM, checkout 11 AM. Late checkout is available on request, subject to availability and extra cost.",
+    },
+    {
+      question: "Is drinking water available?",
+      answer: "Yes, via an on-site water purifier.",
+    },
+    {
+      question: "What should I pack?",
+      answer: "Seasonal clothing, hiking shoes, insect repellent, and binoculars if you're into birdwatching.",
+    },
+    {
+      question: "What can I do there?",
+      answer: "Hike to the backwaters, explore forest trails, birdwatch, cycle, or just soak in the quiet.",
+    },
+    {
+      question: "Where exactly is it located?",
+      answer: "Mauje Mose, Taluka Velhe, District Pune — about an hour from Pune city.",
+    },
+    {
+      question: "How do I get to the property?",
+      answer: "There's a bridge en route that shows as closed or non-functional on Google Maps — it's actually open and is the only route in. Cross the bridge first, then follow the property's location pin.",
+    },
+    {
+      question: "Who do I contact for help getting there?",
+      answer: "A dedicated assistance number is provided closer to your check-in date.",
+    },
+    {
+      question: "What's the food arrangement?",
+      answer: "You can cook your own using the kitchenette, bring your own ingredients, or pre-order from nearby farm stays — vendor contact details are shared post-booking.",
+    },
+    {
+      question: "How does check-in work?",
+      answer: "This is a no-reception property with self-check-in via a lockbox. The lockbox code is shared on the day of check-in.",
+    },
+    {
+      question: "What all information will I get after booking on airbnb?",
+      answer: (
+        <span className="block space-y-3">
+          <ul className="list-disc list-inside space-y-1.5 pl-1 font-normal text-zinc-600">
+            <li>House manual</li>
+            <li>Exact lockbox code</li>
+            <li>Wi-Fi password</li>
+            <li>Caretaker's direct contact number</li>
+            <li>Specific food vendor names and numbers</li>
+            <li>Exact key drop-off instructions at checkout</li>
+          </ul>
+        </span>
+      ),
     },
   ];
+
+  const headerVariants = {
+    initial: { opacity: 0, y: 30 },
+    animate: { opacity: 1, y: 0, transition: { duration: 0.8, ease: smoothEase } },
+  };
 
   const containerVariants: Variants = {
     initial: {},
@@ -38,102 +96,101 @@ export default function FAQSection() {
   };
 
   const itemVariants: Variants = {
-    initial: { opacity: 0, y: 15 },
-    animate: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 1, 0.5, 1] } },
+    initial: { opacity: 0, y: 32 },
+    animate: { opacity: 1, y: 0, transition: { duration: 1, ease: smoothEase } },
   };
 
   return (
-    <div className="w-full flex justify-center bg-white select-none py-20">
+    <section className="w-full bg-white select-none py-24 overflow-hidden flex flex-col items-center">
+      
+      {/* HEADER MATRIX SECTION */}
       <motion.div
-        variants={containerVariants}
         initial="initial"
         whileInView="animate"
         viewport={{ once: true, amount: 0.15 }}
-        className="w-full max-w-[90vw] md:max-w-[700px] px-4 md:px-0 flex flex-col items-center"
+        className="text-center flex flex-col items-center space-y-3 mb-20 px-4"
       >
-        {/* EDITORIAL HEADER */}
-        <div className="text-center flex flex-col items-center space-y-3 mb-12">
-          <motion.h2 
-            variants={itemVariants} 
-            className="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900"
-          >
-            Frequently Asked Questions
-          </motion.h2>
-          <motion.p 
-            variants={itemVariants} 
-            className="text-sm md:text-base text-zinc-400 font-light tracking-wide max-w-sm"
-          >
-            Everything you need to know about your stay at Wind Over Waters.
-          </motion.p>
-        </div>
-
-        {/* FLOATING CARD ACCORDION STACK */}
-        <div className="w-full flex flex-col space-y-4">
-          {faqs.map((faq, i) => {
-            const isOpen = openIndex === i;
-            return (
-              <motion.div
-                key={i}
-                variants={itemVariants}
-                onClick={() => setOpenIndex(isOpen ? null : i)}
-                className={`w-full p-6 md:p-7 rounded-[24px] border transition-all duration-300 cursor-pointer group transform-gpu ${
-                  isOpen 
-                    ? "bg-zinc-50/70 border-zinc-400" 
-                    : "bg-white border-zinc-300 hover:border-zinc-400 hover:bg-zinc-50/30"
-                }`}
-              >
-                {/* Trigger Row Matrix */}
-                <div className="flex items-center justify-between w-full gap-5 text-left">
-                  <div className="flex items-center gap-4 flex-1">
-                    <span className={`text-base md:text-[17px] font-medium tracking-wide transition-colors duration-300 ${
-                      isOpen ? "text-zinc-900" : "text-zinc-700 group-hover:text-zinc-900"
-                    }`}>
-                      {faq.question}
-                    </span>
-                  </div>
-                  
-                  {/* Plus Icon Container */}
-                  <div className="relative w-7 h-7 flex items-center justify-center shrink-0 rounded-full bg-white border border-zinc-400">
-                    <motion.div 
-                      animate={{ rotate: isOpen ? 135 : 0 }}
-                      transition={fluidSpring}
-                      className="absolute w-3 h-[1.5px] bg-zinc-700 rounded-full transform-gpu"
-                    />
-                    <motion.div 
-                      animate={{ rotate: isOpen ? 225 : 90 }}
-                      transition={fluidSpring}
-                      className="absolute w-[1.5px] h-3 bg-zinc-700 rounded-full transform-gpu"
-                    />
-                  </div>
-                </div>
-
-                {/* Narrative Expand Body */}
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={fluidSpring}
-                      className="overflow-hidden"
-                    >
-                      <motion.p 
-                        initial={{ y: -4, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        exit={{ y: -4, opacity: 0 }}
-                        transition={{ duration: 0.2 }}
-                        className="text-sm md:text-base text-zinc-500 font-light leading-relaxed tracking-wide pt-4 pr-4 border-t border-zinc-300 mt-4 transform-gpu"
-                      >
-                        {faq.answer}
-                      </motion.p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            );
-          })}
-        </div>
+        <motion.span variants={headerVariants} className="text-xs font-bold text-zinc-400 uppercase tracking-[0.2em]">
+          Common Queries
+        </motion.span>
+        <motion.h2 
+          variants={headerVariants} 
+          className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-zinc-950 leading-[1.15] max-w-2xl transform-gpu"
+        >
+          Frequently Asked Questions.
+        </motion.h2>
       </motion.div>
-    </div>
+
+      {/* FLOATING CARD ACCORDION STACK */}
+      <motion.div 
+        variants={containerVariants}
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true, amount: 0.05 }}
+        className="w-full max-w-3xl px-6 flex flex-col space-y-5"
+      >
+        {faqs.map((faq, i) => {
+          const isOpen = openIndex === i;
+          return (
+            <motion.div
+              key={i}
+              variants={itemVariants}
+              onClick={() => setOpenIndex(isOpen ? null : i)}
+              className={`w-full p-6 md:p-8 rounded-[32px] border transition-all duration-300 cursor-pointer group transform-gpu ${
+                isOpen 
+                  ? "bg-zinc-50 border-zinc-200/80 shadow-[0_8px_30px_rgb(0,0,0,0.01)]" 
+                  : "bg-white border-zinc-200/60 hover:border-zinc-300 hover:bg-zinc-50/20"
+              }`}
+            >
+              {/* Trigger Row Matrix */}
+              <div className="flex items-center justify-between w-full gap-5 text-left">
+                <span className={`text-lg font-bold tracking-tight transition-colors duration-300 ${
+                  isOpen ? "text-zinc-950" : "text-zinc-800 group-hover:text-zinc-950"
+                }`}>
+                  {faq.question}
+                </span>
+                
+                {/* Flat, Shadowless Rotating Chevron Icon Container */}
+                <motion.div 
+                  animate={{ rotate: isOpen ? 180 : 0 }}
+                  transition={fluidSpring}
+                  className="w-8 h-8 flex items-center justify-center shrink-0 rounded-full bg-white border border-zinc-200 transform-gpu"
+                >
+                  <svg 
+                    className="w-4 h-4 text-zinc-800 stroke-[2.5]" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round" 
+                      d="M19.5 8.25l-7.5 7.5-7.5-7.5" 
+                    />
+                  </svg>
+                </motion.div>
+              </div>
+
+              {/* Narrative Expand Body */}
+              <AnimatePresence initial={false}>
+                {isOpen && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={fluidSpring}
+                    className="overflow-hidden"
+                  >
+                    <div className="text-base md:text-lg text-zinc-500 font-light leading-snug tracking-wide pt-5 border-t border-zinc-200/60 mt-5 transform-gpu">
+                      {faq.answer}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
+          );
+        })}
+      </motion.div>
+    </section>
   );
 }
