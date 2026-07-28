@@ -10,13 +10,73 @@ const GALLERY_DATA = [
     category: "Deck",
     subtitle: "Beautiful Deck to enjoy the Nature View",
     images: [
-      { id: "deck-1", src: "/images/deck-1.jpg" },
-      { id: "deck-2", src: "/images/deck-2.jpg" },
-      { id: "deck-3", src: "/images/deck-3.jpg" },
-      { id: "deck-4", src: "/images/deck-4.jpg" },
-      { id: "deck-5", src: "/images/deck-5.jpg" },
+      { id: "deck-1", src: "/images/deck/deck-1.avif" },
+      { id: "deck-2", src: "/images/deck/deck-2.avif" },
+      { id: "deck-3", src: "/images/deck/deck-3.jpg" },
+      { id: "deck-4", src: "/images/deck/deck-4.jpg" },
+      { id: "deck-5", src: "/images/deck/deck-5.jpg" },
+      { id: "deck-6", src: "/images/deck/deck-6.jpg" },
+      { id: "deck-7", src: "/images/deck/deck-7.jpg" },
+      { id: "deck-8", src: "/images/deck/deck-8.heic" },
     ]
-  }
+  },
+  {
+    id: "kitchen",
+    category: "Kitchen",
+    subtitle: "Modern Kitchen for Culinary Delights",
+    images: [
+      { id: "kitchen-1", src: "/images/kitchen/kitchen-1.jpg" },
+      { id: "kitchen-2", src: "/images/kitchen/kitchen-2.avif" },
+    ]
+  },
+  {
+    id: "bathroom",
+    category: "Bathroom",
+    subtitle: "EClean & NeatBathroom for Relaxation",
+    images: [
+      { id: "bathroom-1", src: "/images/bathroom/bathroom-1.jpg" },
+      { id: "bathroom-2", src: "/images/bathroom/bathroom-2.jpg" },
+      { id: "bathroom-3", src: "/images/bathroom/bathroom-3.png" },
+    ]
+  },
+  {
+    id: "external",
+    category: "External",
+    subtitle: "Beautiful External Spaces for Entertainment",
+    images: [
+      { id: "external-1", src: "/images/external/external-1.avif" },
+      { id: "external-2", src: "/images/external/external-2.jpg" },
+      { id: "external-3", src: "/images/external/external-3.jpg" },
+      { id: "external-4", src: "/images/external/external-4.avif" },
+      { id: "external-5", src: "/images/external/external-5.jpg" },
+      { id: "external-6", src: "/images/external/external-6.jpg" },
+      { id: "external-7", src: "/images/external/external-7.jpg" },
+      { id: "external-8", src: "/images/external/external-8.avif" },
+    ]
+  },
+  {
+    id: "cabin",
+    category: "Cabin",
+    subtitle: "Cozy Cabin for Relaxation",
+    images: [
+      { id: "cabin-1", src: "/images/cabin/cabin-1.avif" },
+      { id: "cabin-2", src: "/images/cabin/cabin-2.jpg" },
+      { id: "cabin-3", src: "/images/cabin/cabin-3.jpg" },
+      { id: "cabin-4", src: "/images/cabin/cabin-4.jpg" },
+      { id: "cabin-5", src: "/images/cabin/cabin-5.jpg" },
+      { id: "cabin-6", src: "/images/cabin/cabin-6.jpg" },
+    ]
+  },
+  {
+    id: "parking",
+    category: "Parking",
+    subtitle: "Spacious Parking for Your Vehicle",
+    images: [
+      { id: "parking-1", src: "/images/parking/parking-1.avif" },
+      { id: "parking-2", src: "/images/parking/parking-2.heic" },
+      { id: "parking-3", src: "/images/parking/parking-3.avif" },
+    ]
+  },
 ];
 
 // Explicitly typing variants stops the generic string type inference error

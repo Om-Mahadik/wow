@@ -2,6 +2,7 @@ import CabinActions from "./CabinActions";
 import CabinAmenities from "./CabinAmenities";
 import CabinGallery from "./CabinGallery";
 import CabinHero from "./CabinHero";
+import CabinKitchen from "./CabinKitchen";
 import CabinLocation from "./CabinLocation";
 import CabinOverview from "./CabinOverview";
 import CabinReviews from "./CabinReviews";
@@ -16,6 +17,7 @@ export default function CabinView() {
       <CabinOverview />
       <CabinAmenities />
       <CabinGallery />
+      <CabinKitchen />
       <CabinLocation />
       <CabinReviews />
       <CabinRules />
