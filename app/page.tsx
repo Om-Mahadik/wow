@@ -7,19 +7,26 @@ import HomeReels from "@/components/home/HomeReels";
 import HomeInstagramEmbeds from "@/components/home/HomeInstagramEmbeds";
 import HomeAirbnbBanner from "@/components/home/HomeAirbnbBanner";
 
+import HeroSection from "@/components/home/HeroSection";
+import ShowcaseSection from "@/components/home/ShowcaseSection";
+import MinimalLivingExplain from "@/components/home/MinimalLivingExplain";
+import BookingWidget from "@/components/home/BookingWidget";
+import FeaturedCabin from "@/components/home/FeaturedCabin";
+import FAQSection from "@/components/faqs/FAQSection";
+import TestimonialsSection from "@/components/home/TestimonialsSection";
+
 export default function Home() {
   return (
-    // Changed max-w-2xl to w-full, dropped items-center, and removed the text-center constraint
-    <main className="w-full min-h-screen flex flex-col gap-16 select-none overflow-x-hidden">
-      <HomeHero />
-      <div className="w-full h-16 lg:h-24" />
-      <HomeAmenities />
-      <HandWrittenExplain />
-      <HomeInstagramEmbeds />
-      <HomeReels />
+    <main className="w-full min-h-screen flex flex-col select-none overflow-x-hidden">
+      {/* Hero sits full-bleed at the very top */}
+      <HeroSection />
+      <ShowcaseSection />
+      <FeaturedCabin />
       <HomeAirbnbBanner />
+      <HomeReels /> 
+      <FAQSection />
       <LocationSection />
-      <PeopleStories />
+
     </main>
   );
 }

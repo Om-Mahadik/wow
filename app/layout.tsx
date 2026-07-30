@@ -10,14 +10,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="antialiased flex flex-col min-h-screen bg-white">
-        {/* Shows up on desktops/tablets */}
+      <body className="antialiased min-h-screen bg-white text-zinc-950 flex flex-col">
+        {/* Navbars float cleanly on top of the content layers */}
         <Navbar />
-        
-        {/* Shows up on mobile screens */}
         <NavbarMobile />
         
-        <main className="flex-grow relative">
+        {/* Main content takes full screen and lets hero flow underneath navbars */}
+        <main className="flex-grow w-full relative">
           {children}
         </main>
         

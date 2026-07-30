@@ -95,8 +95,8 @@ export default function NavbarMobile() {
         )}
       </AnimatePresence>
 
-      {/* 2. Global Mobile Header Frame */}
-      <header className="sm:hidden absolute top-4 left-0 w-full z-50 flex items-center justify-between px-0 select-none">
+      {/* 2. Global Mobile Header Frame (Swapped absolute to fixed for sticky behavior) */}
+      <header className="sm:hidden fixed top-4 left-0 w-full z-50 flex items-center justify-between px-0 select-none">
         
         {/* Left Side Dynamic Logo Capsule — Morphing Size Based on Open State */}
         <motion.div

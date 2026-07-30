@@ -21,6 +21,14 @@ export default function FAQSection() {
       answer: "Two premium prefab tiny cabins (\"Coons\"), built by The Coon Co. and installed on-site, nestled into the forest along the Varasgaon backwaters near Panshet.",
     },
     {
+      question: "Is this a hotel?",
+      answer: "No — it's an immersive glamping experience, closer to stylish, comfortable camping than a traditional hotel stay.",
+    },
+    {
+      question: "What's the check-in/checkout time?",
+      answer: "Check-in is at 1 PM, and checkout is at 11 AM. Late checkout can be requested, subject to availability and an extra cost.",
+    },
+    {
       question: "How do I get to the property?",
       answer: "There's a bridge en route that shows as closed or non-functional on Google Maps — it's actually completely open and is the only route in. Cross the bridge first, then follow the property's shared location pin.",
     },
@@ -31,10 +39,6 @@ export default function FAQSection() {
     {
       question: "How does check-in work?",
       answer: "This is a no-reception property featuring a seamless self-check-in workflow via a secure lockbox. Your individual lockbox access code will be shared automatically on the day of check-in.",
-    },
-    {
-      question: "What's the check-in/checkout time?",
-      answer: "Check-in is at 1 PM, and checkout is at 11 AM. Late checkout can be requested, subject to availability and an extra cost.",
     },
   ];
 

@@ -5,17 +5,19 @@ import Link from "next/link";
 
 export default function Navbar() {
   return (
-    // The main header wrapper now hides completely on mobile ('hidden sm:block')
-    <header className="hidden sm:block w-full bg-white relative z-50 px-4 md:px-12 py-6">
+    // Changed to 'absolute top-0 left-0 bg-transparent' so it floats over the actual content
+    // Changed 'py-6' to 'py-4' to make the layout thinner
+    <header className="hidden sm:block absolute top-0 left-0 w-full bg-transparent z-50 px-4 md:px-12 py-4">
       <div className="max-w-[1440px] mx-auto flex items-center justify-between">
         
         {/* Left Side: Exact Brand Capsule Canopy Module */}
-        {/* Flat left edge, fully rounded right capsule tip, cuts right into the edge margin */}
+        {/* Made padding slightly smaller (py-3.5 to py-2.5) for a slimmer footprint */}
         <Link 
           href="/" 
-          className="flex items-center bg-black rounded-r-full pl-8 pr-10 py-3.5 -ml-4 md:-ml-12 overflow-hidden transition-opacity hover:opacity-95"
+          className="flex items-center bg-black rounded-r-full pl-8 pr-10 py-2.5 -ml-4 md:-ml-12 overflow-hidden transition-opacity hover:opacity-95 shadow-md"
         >
-          <div className="relative w-28 h-10 md:w-32 md:h-11">
+          {/* Sized down width and height slightly for a smaller logo container */}
+          <div className="relative w-24 h-9 md:w-28 md:h-10">
             <Image
               src="/brand/black-bg-logo.png"
               alt="Wind Over Waters"
@@ -26,20 +28,22 @@ export default function Navbar() {
           </div>
         </Link>
 
-        {/* Center Navigation Pill Container (Visible on medium devices and up) */}
-        <nav className="hidden md:flex items-center bg-[#f4f4f5] rounded-full px-10 py-4 gap-10">
-          <Link href="/" className="text-sm font-medium text-zinc-950 hover:opacity-60 transition-opacity">Home</Link>
-          <Link href="/gallery" className="text-sm font-medium text-zinc-950 hover:opacity-60 transition-opacity">Gallery</Link>
-          <Link href="/about" className="text-sm font-medium text-zinc-950 hover:opacity-60 transition-opacity">About</Link>
-          <Link href="/faqs" className="text-sm font-medium text-zinc-950 hover:opacity-60 transition-opacity">FAQs</Link>
-          <Link href="/contact" className="text-sm font-medium text-zinc-950 hover:opacity-60 transition-opacity">Contact</Link>
+        {/* Center Navigation Pill Container */}
+        {/* Made padding thinner (py-4 to py-2.5) and added an elegant low-opacity white blur background */}
+        <nav className="hidden md:flex items-center bg-white/20 backdrop-blur-md rounded-full px-8 py-2.5 gap-8 border border-white/10 shadow-sm">
+          <Link href="/" className="text-xs font-medium text-white hover:opacity-70 transition-opacity">Home</Link>
+          <Link href="/gallery" className="text-xs font-medium text-white hover:opacity-70 transition-opacity">Gallery</Link>
+          <Link href="/about" className="text-xs font-medium text-white hover:opacity-70 transition-opacity">About</Link>
+          <Link href="/faqs" className="text-xs font-medium text-white hover:opacity-70 transition-opacity">FAQs</Link>
+          <Link href="/contact" className="text-xs font-medium text-white hover:opacity-70 transition-opacity">Contact</Link>
         </nav>
 
-        {/* Right Side: Exact Book Now Capsule CTA (Visible on medium devices and up) */}
+        {/* Right Side: Exact Book Now Capsule CTA */}
+        {/* Trimmed height down from h-14 to h-11 and text down to text-xs */}
         <div className="hidden md:block">
           <Link 
             href="/book" 
-            className="inline-flex h-14 px-9 items-center justify-center rounded-full bg-black text-white text-sm font-medium tracking-wide transition-all hover:bg-zinc-900 active:scale-[0.98]"
+            className="inline-flex h-11 px-7 items-center justify-center rounded-full bg-white text-zinc-950 text-xs font-semibold tracking-wide transition-all hover:bg-zinc-200 active:scale-[0.98] shadow-md"
           >
             Book Now
           </Link>
