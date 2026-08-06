@@ -11,17 +11,37 @@ import CabinThingsToDo from "./CabinThingsToDo";
 
 export default function CabinView() {
   return (
-    <div className="space-y-0">
-      <CabinHero />
-      <CabinActions />
-      <CabinOverview />
-      <CabinAmenities />
-      <CabinGallery />
-      <CabinKitchen />
-      <CabinLocation />
-      <CabinReviews />
-      <CabinRules />
-      <CabinThingsToDo />
+    <div className="w-full flex flex-col p-0 m-0 overflow-x-hidden">
+      <section className="w-full">
+        <CabinHero />
+      </section>
+      <section className="w-full">
+        <CabinActions />
+      </section>
+      <section className="w-full">
+        <CabinOverview />
+      </section>
+      <section className="w-full">
+        <CabinAmenities />
+      </section>
+      
+      {/* 100% Full-Bleed Gallery Section */}
+      <section className="w-full relative overflow-hidden my-0 py-0">
+        <CabinGallery />
+      </section>
+
+      <section className="w-full">
+        <CabinKitchen />
+      </section>
+      <section className="w-full">
+        <CabinLocation />
+      </section>
+      <section className="w-full">
+        <CabinReviews />
+      </section>
+      <section className="w-full">
+        <CabinRules />
+      </section>
 
     </div>
   );

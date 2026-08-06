@@ -25,8 +25,8 @@ export default function CabinAmenities() {
     },
   };
 
-  // Showcase layout rows
-  const featuredAmenities = [
+  // Mobile Showcase Items (8 Items)
+  const mobileFeaturedAmenities = [
     { name: "Lake Access", icon: <WaterIcon /> },
     { name: "Free Car Park", icon: <ParkingIcon /> },
     { name: "Air Conditioning", icon: <AcIcon /> },
@@ -35,6 +35,26 @@ export default function CabinAmenities() {
     { name: "Patio or Balcony", icon: <DeckIcon /> },
     { name: "Water Purifier", icon: <PurifierIcon /> },
     { name: "Hammock", icon: <HammockIcon /> },
+  ];
+
+  // Desktop Showcase Items (16 Items for a full 4x4 grid)
+  const desktopFeaturedAmenities = [
+    { name: "Lake Access", icon: <WaterIcon /> },
+    { name: "Free Car Park", icon: <ParkingIcon /> },
+    { name: "Air Conditioning", icon: <AcIcon /> },
+    { name: "Free Wifi", icon: <WifiIcon /> },
+    { name: "Kitchenette", icon: <KitchenIcon /> },
+    { name: "Patio or Balcony", icon: <DeckIcon /> },
+    { name: "Water Purifier", icon: <PurifierIcon /> },
+    { name: "Hammock", icon: <HammockIcon /> },
+    { name: "Induction Stove", icon: <StoveIcon /> },
+    { name: "Fridge & Mini Fridge", icon: <FridgeIcon /> },
+    { name: "Hot Water", icon: <FlameIcon /> },
+    { name: "Coffee Setup", icon: <CoffeeIcon /> },
+    { name: "Outdoor Furniture", icon: <DeckIcon /> },
+    { name: "First Aid Kit", icon: <ShieldIcon /> },
+    { name: "Self Check-in", icon: <KeyIcon /> },
+    { name: "Wine Glasses", icon: <WineIcon /> },
   ];
 
   // Map distinct semantic icons across all catalog targets
@@ -129,7 +149,7 @@ export default function CabinAmenities() {
         {/* Title Stack with Naturally Integrated Wilderness Context */}
         <div className="space-y-2">
           <div className="overflow-hidden py-0.5">
-            <motion.h2 variants={itemVariants} className="text-2xl font-bold tracking-tight text-zinc-900">
+            <motion.h2 variants={itemVariants} className="text-2xl md:text-3xl font-bold tracking-tight text-zinc-900">
               Amenities
             </motion.h2>
           </div>
@@ -141,14 +161,28 @@ export default function CabinAmenities() {
           </motion.p>
         </div>
 
-        {/* Showcase Items Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-4 gap-x-6 pt-2">
-          {featuredAmenities.map((item, index) => (
+        {/* Mobile Showcase Items Grid (8 Items) */}
+        <div className="grid grid-cols-2 md:hidden gap-y-4 gap-x-6 pt-2">
+          {mobileFeaturedAmenities.map((item, index) => (
             <motion.div key={index} variants={itemVariants} className="flex items-center gap-3.5 group py-1">
               <div className="text-black transition-transform duration-300 group-hover:scale-105 shrink-0">
                 {item.icon}
               </div>
-              <span className="text-sm md:text-base text-zinc-500 font-light tracking-wide truncate">
+              <span className="text-sm text-zinc-500 font-light tracking-wide truncate">
+                {item.name}
+              </span>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Desktop Showcase Items Grid (16 Items - 4x4 Grid) */}
+        <div className="hidden md:grid md:grid-cols-4 gap-y-6 gap-x-8 pt-4">
+          {desktopFeaturedAmenities.map((item, index) => (
+            <motion.div key={index} variants={itemVariants} className="flex items-center gap-4 group py-1.5">
+              <div className="text-black transition-transform duration-300 group-hover:scale-110 shrink-0">
+                {item.icon}
+              </div>
+              <span className="text-base text-zinc-600 font-light tracking-wide truncate group-hover:text-zinc-900 transition-colors">
                 {item.name}
               </span>
             </motion.div>
@@ -156,7 +190,7 @@ export default function CabinAmenities() {
         </div>
 
         {/* Interactive Open Actions */}
-        <motion.div variants={itemVariants} className="pt-3 w-full">
+        <motion.div variants={itemVariants} className="pt-4 w-full">
           <button 
             onClick={() => setIsDrawerOpen(true)}
             className="w-full py-4 bg-zinc-50 hover:bg-zinc-100 active:scale-[0.99] transition-all duration-300 rounded-xl border border-zinc-200/60 flex items-center justify-center gap-2 cursor-pointer group"
@@ -194,7 +228,7 @@ export default function CabinAmenities() {
                   <h3 className="text-2xl font-bold tracking-tight text-zinc-900">All Amenities</h3>
                   <button 
                     onClick={() => setIsDrawerOpen(false)}
-                    className="w-9 h-9 bg-zinc-100 hover:bg-zinc-200 rounded-full flex items-center justify-center text-zinc-800 transition-colors cursor-pointer text-sm"
+                    className="w-9 h-9 bg-zinc-100 hover:bg-zinc-200 rounded-full flex items-center justify-center text-zinc-800 transition-colors cursor-pointer text-sm font-bold"
                   >
                     ✕
                   </button>
@@ -232,29 +266,28 @@ export default function CabinAmenities() {
 // MATTE VECTOR LINE ART STROKES
 // ==========================================
 
-function WaterIcon() { return <svg className="w-5 h-5 stroke-black fill-none stroke-[1.5]" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3 14c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2M3 18c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2" /></svg>; }
-function ParkingIcon() { return <svg className="w-5 h-5 stroke-black fill-none stroke-[1.5]" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path strokeLinecap="round" strokeLinejoin="round" d="M9 17V7h4a3 3 0 0 1 0 6H9" /></svg>; }
-function AcIcon() { return <svg className="w-5 h-5 stroke-black fill-none stroke-[1.5]" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 2v20M2 12h20M20 4l-16 16M4 4l16 16" /></svg>; }
-function WifiIcon() { return <svg className="w-5 h-5 stroke-black fill-none stroke-[1.5]" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M8.53 16.11a6 6 0 0 1 6.95 0M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0" /><circle cx="12" cy="20" r="1" className="fill-black" /></svg>; }
-function KitchenIcon() { return <svg className="w-5 h-5 stroke-black fill-none stroke-[1.5]" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 3v18M4 7h16M4 12h16M4 17h16" /></svg>; }
-function DeckIcon() { return <svg className="w-5 h-5 stroke-black fill-none stroke-[1.5]" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3 12h18M3 6h18M3 18h18" /></svg>; }
-function PurifierIcon() { return <svg className="w-5 h-5 stroke-black fill-none stroke-[1.5]" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s9.75 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" /></svg>; }
-function HammockIcon() { return <svg className="w-5 h-5 stroke-black fill-none stroke-[1.5]" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M2 8s4 6 10 6 10-6 10-6M2 8v4m20-4v4" /></svg>; }
+function WaterIcon() { return <svg className="w-5 h-5 md:w-6 md:h-6 stroke-black fill-none stroke-[1.5]" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3 14c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2M3 18c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2" /></svg>; }
+function ParkingIcon() { return <svg className="w-5 h-5 md:w-6 md:h-6 stroke-black fill-none stroke-[1.5]" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path strokeLinecap="round" strokeLinejoin="round" d="M9 17V7h4a3 3 0 0 1 0 6H9" /></svg>; }
+function AcIcon() { return <svg className="w-5 h-5 md:w-6 md:h-6 stroke-black fill-none stroke-[1.5]" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 2v20M2 12h20M20 4l-16 16M4 4l16 16" /></svg>; }
+function WifiIcon() { return <svg className="w-5 h-5 md:w-6 md:h-6 stroke-black fill-none stroke-[1.5]" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M8.53 16.11a6 6 0 0 1 6.95 0M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0" /><circle cx="12" cy="20" r="1" className="fill-black" /></svg>; }
+function KitchenIcon() { return <svg className="w-5 h-5 md:w-6 md:h-6 stroke-black fill-none stroke-[1.5]" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 3v18M4 7h16M4 12h16M4 17h16" /></svg>; }
+function DeckIcon() { return <svg className="w-5 h-5 md:w-6 md:h-6 stroke-black fill-none stroke-[1.5]" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3 12h18M3 6h18M3 18h18" /></svg>; }
+function PurifierIcon() { return <svg className="w-5 h-5 md:w-6 md:h-6 stroke-black fill-none stroke-[1.5]" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s9.75 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" /></svg>; }
+function HammockIcon() { return <svg className="w-5 h-5 md:w-6 md:h-6 stroke-black fill-none stroke-[1.5]" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M2 8s4 6 10 6 10-6 10-6M2 8v4m20-4v4" /></svg>; }
 
 // CATEGORY ICON EXTENSIONS
 function SparklesIcon() { return <svg className="w-5 h-5 stroke-black fill-none stroke-[1.5]" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 21l-.813-5.096L3 15.087l5.096-.813L9 9l.813 5.274 5.096.813-5.096.817zM19.071 4.929l-.356 2.23-2.23.356 2.23.356.356 2.23.356-2.23 2.23-.356-2.23-.356-.356-2.23z" /></svg>; }
 function SoapIcon() { return <svg className="w-5 h-5 stroke-black fill-none stroke-[1.5]" viewBox="0 0 24 24"><rect width="14" height="18" x="5" y="3" rx="4" /><path d="M9 7h6M9 11h6" /></svg>; }
-function FlameIcon() { return <svg className="w-5 h-5 stroke-black fill-none stroke-[1.5]" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>; }
+function FlameIcon() { return <svg className="w-5 h-5 md:w-6 md:h-6 stroke-black fill-none stroke-[1.5]" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>; }
 function TowelIcon() { return <svg className="w-5 h-5 stroke-black fill-none stroke-[1.5]" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M4 5h16v14H4zM4 10h16M4 15h16" /></svg>; }
 function BedIcon() { return <svg className="w-5 h-5 stroke-black fill-none stroke-[1.5]" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M2 4v16M2 11h20M22 4v16M6 8h4M2 16h20" /></svg>; }
 function BlindsIcon() { return <svg className="w-5 h-5 stroke-black fill-none stroke-[1.5]" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3 3h18M3 7h18M3 11h18M3 15h18M3 19h18" /></svg>; }
-function ShieldIcon() { return <svg className="w-5 h-5 stroke-black fill-none stroke-[1.5]" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>; }
-function StoveIcon() { return <svg className="w-5 h-5 stroke-black fill-none stroke-[1.5]" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2" /><circle cx="8" cy="9" r="2" /><circle cx="16" cy="9" r="2" /><circle cx="8" cy="16" r="1" /><circle cx="16" cy="16" r="1" /></svg>; }
-function FridgeIcon() { return <svg className="w-5 h-5 stroke-black fill-none stroke-[1.5]" viewBox="0 0 24 24"><rect width="14" height="20" x="5" y="2" rx="2" /><path d="M5 10h14M9 5v2M9 14v3" /></svg>; }
+function ShieldIcon() { return <svg className="w-5 h-5 md:w-6 md:h-6 stroke-black fill-none stroke-[1.5]" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>; }
+function StoveIcon() { return <svg className="w-5 h-5 md:w-6 md:h-6 stroke-black fill-none stroke-[1.5]" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2" /><circle cx="8" cy="9" r="2" /><circle cx="16" cy="9" r="2" /><circle cx="8" cy="16" r="1" /><circle cx="16" cy="16" r="1" /></svg>; }
+function FridgeIcon() { return <svg className="w-5 h-5 md:w-6 md:h-6 stroke-black fill-none stroke-[1.5]" viewBox="0 0 24 24"><rect width="14" height="20" x="5" y="2" rx="2" /><path d="M5 10h14M9 5v2M9 14v3" /></svg>; }
 function MicrowaveIcon() { return <svg className="w-5 h-5 stroke-black fill-none stroke-[1.5]" viewBox="0 0 24 24"><rect width="18" height="14" x="3" y="5" rx="2" /><rect width="10" height="8" x="6" y="8" rx="1" /><circle cx="18" cy="9" r="1" /><circle cx="18" cy="12" r="1" /></svg>; }
 function UtensilsIcon() { return <svg className="w-5 h-5 stroke-black fill-none stroke-[1.5]" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M4 3v7a3 3 0 0 0 3 3h0a3 3 0 0 0 3-3V3M8 3v18M20 21v-8a3 3 0 0 0-3-3h-1V3h4" /></svg>; }
-function WineIcon() { return <svg className="w-5 h-5 stroke-black fill-none stroke-[1.5]" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 15a5 5 0 0 0 5-5V4H7v6a5 5 0 0 0 5 5zm0 0v5m-4 0h8" /></svg>; }
-function CoffeeIcon() { return <svg className="w-5 h-5 stroke-black fill-none stroke-[1.5]" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M17 8h1a4 4 0 1 1 0 8h-1M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8zM6 2v2M10 2v2M14 2v2" /></svg>; }
-// Using a universal custom icon variant placeholder to avoid complex path issues
+function WineIcon() { return <svg className="w-5 h-5 md:w-6 md:h-6 stroke-black fill-none stroke-[1.5]" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 15a5 5 0 0 0 5-5V4H7v6a5 5 0 0 0 5 5zm0 0v5m-4 0h8" /></svg>; }
+function CoffeeIcon() { return <svg className="w-5 h-5 md:w-6 md:h-6 stroke-black fill-none stroke-[1.5]" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M17 8h1a4 4 0 1 1 0 8h-1M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8zM6 2v2M10 2v2M14 2v2" /></svg>; }
 function SmokingIcon() { return <svg className="w-5 h-5 stroke-black fill-none stroke-[1.5]" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M18 12H3m15 0h3M18 9v6M3 15h9m6-11c.5 1-.5 2-1 3.5s.5 2 1 3.5" /></svg>; }
-function KeyIcon() { return <svg className="w-5 h-5 stroke-black fill-none stroke-[1.5]" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 5.25a3 3 0 0 1 3 3m3 0a6 6 0 1 1-7.029-5.912c.056-.007.113-.005.168-.005H21v3.75H18v3H15.75v1.75l-1.5 1.5-1.5-1.5V8.25z" /></svg>; }
+function KeyIcon() { return <svg className="w-5 h-5 md:w-6 md:h-6 stroke-black fill-none stroke-[1.5]" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 5.25a3 3 0 0 1 3 3m3 0a6 6 0 1 1-7.029-5.912c.056-.007.113-.005.168-.005H21v3.75H18v3H15.75v1.75l-1.5 1.5-1.5-1.5V8.25z" /></svg>; }

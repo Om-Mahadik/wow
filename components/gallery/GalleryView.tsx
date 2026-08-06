@@ -120,10 +120,8 @@ export default function GalleryView() {
       <div className="w-full flex items-center justify-between mb-20">
         
         {/* Left Side: Filter Pill */}
-        <div className="flex items-center gap-3 bg-[#f4f4f5] hover:bg-zinc-200/70 border border-zinc-200/30 rounded-full px-5 py-2.5 cursor-pointer text-zinc-900 font-medium transition-all duration-300 group">
-          <SlidersHorizontal className="w-4 h-4 stroke-[2] text-zinc-600 group-hover:rotate-90 transition-transform duration-500" />
-          <span className="text-sm tracking-wide">Filters</span>
-          <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 ml-1 animate-pulse" />
+        <div className="flex items-center gap-3 bg-[#ffffff hover:bg-zinc-200/70 border border-zinc-200/30 rounded-full px-5 py-2.5 cursor-pointer text-zinc-900 font-medium transition-all duration-300 group">
+
         </div>
 
         {/* Center Category Options */}

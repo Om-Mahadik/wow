@@ -5,12 +5,13 @@ import { motion } from "framer-motion";
 export default function CabinLocation() {
   const smoothEase = [0.25, 1, 0.5, 1] as const;
 
-  const descString = "Neither too close nor too far, perfect escape is just few miles away.";
+  const descString = "Neither too close nor too far, perfect escape is just a few miles away.";
   const words = descString.split(" ");
 
-  const mapUrl = "https://www.google.com/maps/place/Wind+Over+Waters+-+Glamping/@18.4325016,73.4947938,17z";
-  const puneDirectionsUrl = "https://www.google.com/maps/dir/Pune,+Maharashtra/Wind+Over+Waters+-+Glamping";
-  const mumbaiDirectionsUrl = "https://www.google.com/maps/dir/Mumbai,+Maharashtra/Wind+Over+Waters+-+Glamping";
+  // Exact Google Maps Place Target Links
+  const mapUrl = "https://maps.app.goo.gl/2VgWzuaBRBH4hq8n8";
+  const puneDirectionsUrl = "https://www.google.com/maps/dir/Pune+Railway+Station,+Pune,+Maharashtra/Wind+Over+Waters+-+Glamping";
+  const mumbaiDirectionsUrl = "https://www.google.com/maps/dir/Chhatrapati+Shivaji+Maharaj+Terminus,+Mumbai,+Maharashtra/Wind+Over+Waters+-+Glamping";
 
   const containerVariants = {
     initial: {},
@@ -18,8 +19,8 @@ export default function CabinLocation() {
   };
 
   const itemVariants = {
-    initial: { opacity: 0, y: 24 },
-    animate: { opacity: 1, y: 0, transition: { duration: 0.8, ease: smoothEase } },
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0, transition: { duration: 0.7, ease: smoothEase } },
   };
 
   const paraContainerVariants = {
@@ -28,17 +29,17 @@ export default function CabinLocation() {
   };
 
   const wordVariants = {
-    initial: { opacity: 0, y: 15 },
-    animate: { opacity: 1, y: 0, transition: { duration: 0.6, ease: smoothEase } },
+    initial: { opacity: 0, y: 12 },
+    animate: { opacity: 1, y: 0, transition: { duration: 0.5, ease: smoothEase } },
   };
 
   const mapVariants = {
-    initial: { opacity: 0, scale: 0.99, y: 20 },
-    animate: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.8, ease: smoothEase } },
+    initial: { opacity: 0, scale: 0.99, y: 15 },
+    animate: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.7, ease: smoothEase } },
   };
 
   return (
-    <div className="w-full flex justify-center bg-white select-none pt-12 pb-20">
+    <div className="w-full flex justify-center bg-white select-none pt-10 pb-8">
       <motion.div
         variants={containerVariants}
         initial="initial"
@@ -46,23 +47,23 @@ export default function CabinLocation() {
         viewport={{ once: true, amount: 0.15 }}
         className="w-full md:max-w-[80vw] px-4 md:px-0"
       >
-        {/* Responsive Framework Matrix: 1 Column on Mobile, 2 Column Split Sidebar on Widescreen PC layouts */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+        {/* Responsive Grid Matrix */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start">
           
-          {/* LEFT SIDE PANEL - Branding, copy metrics, data blocks, and map CTA button triggers */}
-          <div className="lg:col-span-5 flex flex-col space-y-6">
+          {/* LEFT SIDE PANEL */}
+          <div className="lg:col-span-5 flex flex-col space-y-3">
             
-            {/* Section Heading */}
+            {/* Section Heading (Tightened space below) */}
             <div className="overflow-hidden py-0.5">
-              <motion.h2 variants={itemVariants} className="text-2xl font-bold tracking-tight text-zinc-900">
+              <motion.h2 variants={itemVariants} className="text-2xl md:text-3xl font-bold tracking-tight text-zinc-900">
                 Location
               </motion.h2>
             </div>
 
-            {/* Word-Level Paragraph Split */}
+            {/* Word-Level Animated Paragraph (Subline) */}
             <motion.p
               variants={paraContainerVariants}
-              className="text-base md:text-lg text-zinc-500 font-light leading-snug tracking-wide flex flex-wrap gap-x-[0.25em] -my-0.5"
+              className="text-base md:text-lg text-zinc-500 font-light leading-relaxed tracking-wide flex flex-wrap gap-x-[0.25em] -my-0.5 max-w-xl pb-3"
             >
               {words.map((word, index) => (
                 <span key={index} className="inline-block overflow-hidden py-0.5">
@@ -73,88 +74,96 @@ export default function CabinLocation() {
               ))}
             </motion.p>
 
-            {/* Premium Distance Matrix Info Nodes Row */}
-            <div className="grid grid-cols-2 pt-6 pb-2 items-center relative w-full max-w-sm">
+            {/* Distance Cards (Added clear separation above) */}
+            <div className="grid grid-cols-2 gap-3 pt-3 w-full max-w-md">
               
-              {/* Pune City Direction Portal */}
+              {/* Pune Route Card */}
               <motion.a 
                 href={puneDirectionsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 variants={itemVariants} 
-                className="flex items-center gap-3.5 pl-1 group cursor-pointer"
+                className="flex flex-col justify-between p-4 rounded-2xl bg-zinc-50 hover:bg-zinc-100/90 border border-zinc-200/70 transition-all duration-300 group cursor-pointer shadow-2xs hover:shadow-xs hover:-translate-y-0.5"
               >
-                <div className="w-9 h-9 rounded-full bg-zinc-50 border border-zinc-100 flex items-center justify-center shrink-0 group-hover:bg-zinc-900 transition-colors duration-300">
-                  <svg 
-                    className="w-4 h-4 text-zinc-800 rotate-[45deg] stroke-[1.8] group-hover:text-white transition-colors duration-300" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.769 59.769 0 0121.485 12 59.768 59.768 0 013.27 20.875L5.999 12zm0 0h7.5" />
-                  </svg>
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-xl font-bold tracking-tight text-black">33 kms</span>
-                  <span className="text-xs font-medium text-zinc-400 tracking-wide mt-0.5 group-hover:text-zinc-900 transition-colors">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[11px] font-bold uppercase tracking-widest text-zinc-400 group-hover:text-zinc-700 transition-colors">
                     From Pune
                   </span>
+                  <div className="w-8.5 h-8.5 rounded-full bg-white border border-zinc-200/80 flex items-center justify-center shrink-0 group-hover:bg-zinc-900 group-hover:border-zinc-900 transition-all duration-300 shadow-2xs">
+                    <RoutePathIcon />
+                  </div>
+                </div>
+                <div>
+                  <span className="text-2xl md:text-3xl font-extrabold tracking-tight text-zinc-900">62 km</span>
+                  <div className="flex items-center gap-1.5 mt-1">
+                    <ClockIcon />
+                    <p className="text-xs font-medium text-zinc-500 tracking-wide">1.5 - 2 hrs drive</p>
+                  </div>
                 </div>
               </motion.a>
 
-              {/* Center Line Split Divider */}
-              <div className="absolute left-1/2 top-0 bottom-0 w-[1px] bg-zinc-200 h-full" />
-
-              {/* Mumbai City Direction Portal */}
+              {/* Mumbai Route Card */}
               <motion.a 
                 href={mumbaiDirectionsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 variants={itemVariants} 
-                className="flex items-center gap-3.5 pl-6 group cursor-pointer"
+                className="flex flex-col justify-between p-4 rounded-2xl bg-zinc-50 hover:bg-zinc-100/90 border border-zinc-200/70 transition-all duration-300 group cursor-pointer shadow-2xs hover:shadow-xs hover:-translate-y-0.5"
               >
-                <div className="w-9 h-9 rounded-full bg-zinc-50 border border-zinc-100 flex items-center justify-center shrink-0 group-hover:bg-zinc-900 transition-colors duration-300">
-                  <svg 
-                    className="w-4 h-4 text-zinc-800 rotate-[45deg] stroke-[1.8] group-hover:text-white transition-colors duration-300" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.769 59.769 0 0121.485 12 59.768 59.768 0 013.27 20.875L5.999 12zm0 0h7.5" />
-                  </svg>
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-xl font-bold tracking-tight text-black">146 km</span>
-                  <span className="text-xs font-medium text-zinc-400 tracking-wide mt-0.5 group-hover:text-zinc-900 transition-colors">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[11px] font-bold uppercase tracking-widest text-zinc-400 group-hover:text-zinc-700 transition-colors">
                     From Mumbai
                   </span>
+                  <div className="w-8.5 h-8.5 rounded-full bg-white border border-zinc-200/80 flex items-center justify-center shrink-0 group-hover:bg-zinc-900 group-hover:border-zinc-900 transition-all duration-300 shadow-2xs">
+                    <RoutePathIcon />
+                  </div>
+                </div>
+                <div>
+                  <span className="text-2xl md:text-3xl font-extrabold tracking-tight text-zinc-900">155 km</span>
+                  <div className="flex items-center gap-1.5 mt-1">
+                    <ClockIcon />
+                    <p className="text-xs font-medium text-zinc-500 tracking-wide">3.5 - 4 hrs drive</p>
+                  </div>
                 </div>
               </motion.a>
+
             </div>
 
-            {/* Open In Maps Trigger Button - Repositioned cleanly to the bottom, casing standard text case formatting */}
-            <motion.div variants={itemVariants} className="w-full max-w-sm pt-2">
+            {/* Open In Maps Trigger Button */}
+            <motion.div variants={itemVariants} className="w-full max-w-md pt-1">
               <a
                 href={mapUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-3.5 bg-zinc-50 hover:bg-zinc-100 active:scale-[0.99] transition-all duration-300 rounded-xl border border-zinc-200/60 flex items-center justify-center cursor-pointer text-sm font-medium tracking-wide text-zinc-700 hover:text-black shadow-sm"
+                className="w-full py-3.5 bg-zinc-900 hover:bg-zinc-800 active:scale-[0.99] transition-all duration-300 rounded-2xl flex items-center justify-center gap-2 cursor-pointer text-xs font-bold tracking-[0.15em] uppercase text-white shadow-xs hover:shadow-sm"
               >
+                <MapPinIcon />
                 Open in Google Maps
               </a>
             </motion.div>
 
           </div>
 
-          {/* RIGHT SIDE PANEL - High Vibrancy Live Interactive Embedded Map Map widget canvas view */}
-          {/* Increased margin space via Tailwind gap properties separating layout structural items beautifully */}
+          {/* RIGHT SIDE PANEL - Verified Official Google Maps Embed Canvas */}
           <motion.div 
             variants={mapVariants}
-            className="lg:col-span-7 relative w-full aspect-[4/3] md:aspect-[16/10] lg:aspect-[16/9] rounded-[32px] overflow-hidden border border-zinc-200/40 shadow-sm transform-gpu isolate saturate-[1.3] contrast-[1.05] brightness-[1.02]"
+            className="lg:col-span-7 relative w-full aspect-[4/3] md:aspect-[16/10] lg:aspect-[16/9] rounded-[28px] overflow-hidden border border-zinc-200/80 shadow-xs transform-gpu isolate group"
           >
+            {/* Top Interactive Badge */}
+            <a 
+              href={mapUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-zinc-200/80 shadow-2xs flex items-center gap-2 hover:bg-white transition-all cursor-pointer"
+            >
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="text-xs font-semibold text-zinc-800 tracking-wide">Wind Over Waters - Glamping</span>
+            </a>
+
+            {/* Embed Frame mapped directly to place ID */}
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3785.1274431952514!2d73.4947938!3d18.4325016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2a1883394c8e1%3A0x6a0c441b1d7d655f!2sWind%20Over%20Waters%20-%20Glamping!5e0!3m2!1sen!2sin!4v1715000000000!5m2!1sen!2sin"
-              className="absolute inset-0 w-full h-full border-0"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3785.1274431952514!2d73.5771637!3d18.3859574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2a1883394c8e1%3A0x6a0c441b1d7d655f!2sWind%20Over%20Waters%20-%20Glamping!5e0!3m2!1sen!2sin!4v1715000000000!5m2!1sen!2sin"
+              className="absolute inset-0 w-full h-full border-0 saturate-[1.1] contrast-[1.02]"
               allowFullScreen={false}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
@@ -164,5 +173,40 @@ export default function CabinLocation() {
         </div>
       </motion.div>
     </div>
+  );
+}
+
+// ==========================================
+// CUSTOM VECTOR ICONS
+// ==========================================
+
+function RoutePathIcon() {
+  return (
+    <svg 
+      className="w-4 h-4 text-zinc-800 group-hover:text-white transition-colors duration-300" 
+      fill="none" 
+      viewBox="0 0 24 24" 
+      stroke="currentColor"
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 18.818V8.052a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+    </svg>
+  );
+}
+
+function ClockIcon() {
+  return (
+    <svg className="w-3.5 h-3.5 text-zinc-400 stroke-[2]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <circle cx="12" cy="12" r="9" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 7v5l3 2" />
+    </svg>
+  );
+}
+
+function MapPinIcon() {
+  return (
+    <svg className="w-4 h-4 text-white stroke-[2]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+    </svg>
   );
 }

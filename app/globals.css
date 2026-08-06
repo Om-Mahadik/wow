@@ -23,8 +23,20 @@
   font-display: swap;
 }
 
-/* 4. Base Overrides configured for Light Theme */
+/* 4. Base Overrides & Edge-to-Edge Layout Fixes */
 @layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
   body {
     background-color: #fafafa; /* Off-white background */
     color: #18181b;            /* Near-black text */
@@ -32,5 +44,9 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
   }
 }

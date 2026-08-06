@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function CabinPage() {
   return (
-    <main className="w-full min-h-screen bg-white pt-12 pb-24">
+    <main className="w-full min-h-screen bg-white pt-0 pb-24">
       <CabinView />
     </main>
   );
