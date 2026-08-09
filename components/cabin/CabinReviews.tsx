@@ -30,71 +30,71 @@ export default function CabinReviews() {
   const testimonials = [
     {
       num: "01",
-      platform: "airbnb",
+      platform: "google",
       name: "Sabalil",
       avatar: "/images/deck-1.jpg",
       date: "July 2025",
-      badgeText: "10 years on Airbnb",
+      badgeText: "Local Guide",
       text: "This is a magical place. We had a great experience. The view along with the serenity and calmness of the surroundings makes it an ideal getaway which is not very far from the city. The lake below and trails around makes it a complete adventure. This was our second time at this place and both the times, the experience was worth it. A must visit during monsoons as the place turns into a wonderland.",
       attachedImages: ["/images/deck-2.jpg", "/images/deck-3.jpg"],
     },
     {
       num: "02",
-      platform: "airbnb",
+      platform: "google",
       name: "Priyanka",
       avatar: "/images/deck-2.jpg",
       date: "1 week ago",
-      badgeText: "6 years on Airbnb",
+      badgeText: "Verified Reviewer",
       text: "This is one of the most beautiful places I have ever experienced, especially for someone from Mumbai, where spending time in nature like this is rare. I loved every moment of my stay. I wish I could have stayed longer, waking up to birdsong, a gentle natural breeze on my face, and the water body right in front of my room. Every moment felt magical, almost like being in heaven.",
       attachedImages: [],
     },
     {
       num: "03",
-      platform: "airbnb",
+      platform: "google",
       name: "Mitalee",
       avatar: "/images/deck-3.jpg",
       date: "November 2024",
-      badgeText: "14 years on Airbnb",
+      badgeText: "Local Guide",
       text: "We wanted to get away from the city, and just be by ourselves one with nature. And that's what we got. Had the best kinda-glamping experience, you're completely in nature with all the amenities to make it comfortable. We cooked, swam, made a bonfire and just had the nicest time in the place. It was our first experience in a tiny home concept and was the coolest. Will definitely come back :)",
       attachedImages: ["/images/deck-4.jpg"],
     },
     {
       num: "04",
-      platform: "airbnb",
+      platform: "google",
       name: "Sangram",
       avatar: "/images/deck-4.jpg",
       date: "2 weeks ago",
-      badgeText: "1 year on Airbnb",
+      badgeText: "Verified Reviewer",
       text: "All of the hosts are very responsive. The place is private, cozy, serene and rugged at the same time. Wind over waters proves its name. The breeze above the Mutha river keeps you cool. Ample parking space to park the car. Hosts provided all of the manuals about usage of the property. Best wishes ❤️",
       attachedImages: [],
     },
     {
       num: "05",
-      platform: "airbnb",
+      platform: "google",
       name: "Pallav",
       avatar: "/images/deck-1.jpg",
       date: "May 2026",
-      badgeText: "10 years on Airbnb",
+      badgeText: "Local Guide",
       text: "Its a beautiful and nicely kept property, perfect getaway for couples. We had a peaceful stay, host is also supportive.",
       attachedImages: [],
     },
     {
       num: "06",
-      platform: "airbnb",
+      platform: "google",
       name: "Arkajyoti",
       avatar: "/images/deck-2.jpg",
       date: "May 2026",
-      badgeText: "3 years on Airbnb",
+      badgeText: "Verified Reviewer",
       text: "A cosy secluded cabin in the middle of the wilderness. Perfect for people who are looking to get away from the crowd. Loved the experience. There's a small pathway to the water body which we loved. Fireflies putting up a show at night which was magical. Starry skies with cool breeze blowing made the overall experience amazing. Would love to come back again.",
       attachedImages: [],
     },
     {
       num: "07",
-      platform: "airbnb",
+      platform: "google",
       name: "Aalish",
       avatar: "/images/deck-3.jpg",
       date: "February 2025",
-      badgeText: "5 years on Airbnb",
+      badgeText: "Local Guide",
       text: "A Truly Serene Escape\nI had the most incredible stay at this Airbnb, nestled in the heart of nature with the beautiful Mutha River right by. The surroundings are absolutely breathtaking—lush greenery, peaceful sounds of the river, and an atmosphere that instantly makes you feel at peace. It was the perfect escape from the hustle and bustle of daily life. The calmness of the place is surreal, almost like being in a dream.\nWhether you're looking to unwind, immerse yourself in nature, or simply enjoy some quiet time by the river, this place offers everything you need.\nHighly recommend for anyone seeking tranquility and a close connection to nature. I'll definitely be coming back!",
       attachedImages: [],
     },
@@ -204,14 +204,20 @@ export default function CabinReviews() {
                 </div>
               </div>
               
-              {/* Verified Banner */}
-              <div className="flex items-center gap-2.5 bg-zinc-50/80 border border-zinc-200/60 rounded-xl py-2.5 px-3.5 w-full shadow-2xs">
-                <AirbnbIcon className="w-5 h-5 text-[#FF5A5F]" />
+              {/* Verified Google Reviews Banner */}
+              <a
+                href="https://www.google.com/maps/place/Wind+over+Waters/@18.3860057,73.5745869,1480m/data=!3m1!1e3!4m9!3m8!1s0x3bc2990030fdf32f:0xa894c86bb422981f!5m2!4m1!1i2!8m2!3d18.3860006!4d73.5771618!16s%2Fg%2F11vx37l_zy?entry=ttu&g_ep=EgoyMDI2MDgwNS4xIKXMDSoASAFQAw%3D%3D" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2.5 bg-zinc-50/80 hover:bg-zinc-100/80 border border-zinc-200/60 rounded-xl py-2.5 px-3.5 w-full shadow-2xs transition-colors duration-200 group cursor-pointer"
+              >
+                <GoogleIcon className="w-5 h-5 shrink-0" />
                 <div className="w-[1px] h-3.5 bg-zinc-200" />
-                <span className="text-xs font-semibold tracking-wide text-zinc-800">
-                  Verified guest reviews on Airbnb
+                <span className="text-xs font-semibold tracking-wide text-zinc-800 group-hover:text-black transition-colors">
+                  Verified guest reviews on Google
                 </span>
-              </div>
+                <span className="ml-auto text-xs text-zinc-400 group-hover:translate-x-0.5 transition-transform">→</span>
+              </a>
             </motion.div>
 
             {/* Subtitle / Paragraph Word Stagger */}
@@ -291,8 +297,8 @@ export default function CabinReviews() {
                       </div>
 
                       {/* Brand Icon Badge */}
-                      <div className="opacity-60 group-hover:opacity-40 transition-opacity duration-500 shrink-0">
-                        <AirbnbIcon className="w-5 h-5 text-[#FF5A5F]" />
+                      <div className="shrink-0">
+                        <GoogleIcon className="w-5 h-5" />
                       </div>
                     </div>
 
@@ -363,7 +369,7 @@ export default function CabinReviews() {
                   <div className="flex flex-col">
                     <h3 className="text-2xl font-bold tracking-tight text-zinc-900">Guest Reviews</h3>
                     <p className="text-xs text-zinc-400 font-light mt-0.5">
-                      Showing all verified reviews from Airbnb stays
+                      Showing all verified reviews from Google Maps
                     </p>
                   </div>
                   <button 
@@ -467,10 +473,25 @@ function StarIcon() {
   );
 }
 
-function AirbnbIcon({ className = "w-5 h-5" }: { className?: string }) {
+function GoogleIcon({ className = "w-5 h-5" }: { className?: string }) {
   return (
-    <svg className={`${className} shrink-0 fill-current`} viewBox="0 0 32 32">
-      <path d="M16 1c-2.007 0-3.612 1.2-4.498 3.142l-9.865 19.57c-.604 1.258-.657 2.685-.145 3.966C2.003 28.96 3.09 29.837 4.393 30h23.213c1.304-.163 2.39-.107 2.902-1.322.512-1.28.46-2.708-.145-3.966L20.498 4.143C19.612 2.2 18.007 1 16 1zm0 3c.993 0 1.812.632 2.247 1.583l9.866 19.563c.277.577.303 1.154.075 1.72-.228.568-.748 1.05-1.402 1.134H5.214c-.655-.084-1.174-.566-1.402-1.134-.228-.566-.202-1.143.075-1.72l9.866-19.563C14.188 4.632 15.007 4 16 4zm0 9c-2.206 0-4 1.794-4 4 0 1.722 1.096 3.176 2.622 3.738L16 22.868l1.378-2.13C18.904 20.176 20 18.722 20 17c0-2.206-1.794-4-4-4zm0 2c1.106 0 2 .894 2 2 0 .74-.403 1.377-1.002 1.71L16 20.264l-.998-1.553C14.403 18.378 14 17.74 14 17c0-1.106.894-2 2-2z"/>
+    <svg className={className} viewBox="0 0 24 24">
+      <path
+        fill="#4285F4"
+        d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+      />
+      <path
+        fill="#34A853"
+        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+      />
+      <path
+        fill="#FBBC05"
+        d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"
+      />
+      <path
+        fill="#EA4335"
+        d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"
+      />
     </svg>
   );
 }
