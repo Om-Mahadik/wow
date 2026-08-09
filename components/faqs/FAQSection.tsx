@@ -15,28 +15,72 @@ export default function FAQSection() {
     mass: 0.8
   };
 
-  const faqs = [
-    {
-      question: "What kind of property is this?",
-      answer: "Two premium prefab tiny cabins (\"Coons\"), built by The Coon Co. and installed on-site, nestled into the forest along the Varasgaon backwaters near Panshet.",
-    },
-    {
-      question: "How do I get to the property?",
-      answer: "There's a bridge en route that shows as closed or non-functional on Google Maps — it's actually completely open and is the only route in. Cross the bridge first, then follow the property's shared location pin.",
-    },
-    {
-      question: "What's the food arrangement?",
-      answer: "You can cook your own meals using the on-site kitchenette (feel free to bring your own ingredients) or pre-order local meals from nearby farm stays. Vendor contact details are shared right after booking.",
-    },
-    {
-      question: "How does check-in work?",
-      answer: "This is a no-reception property featuring a seamless self-check-in workflow via a secure lockbox. Your individual lockbox access code will be shared automatically on the day of check-in.",
-    },
-    {
-      question: "What's the check-in/checkout time?",
-      answer: "Check-in is at 1 PM, and checkout is at 11 AM. Late checkout can be requested, subject to availability and an extra cost.",
-    },
-  ];
+const faqs = [
+  {
+    question: "What kind of property is this?",
+    answer: "Two self-contained cabins set side by side, right at the edge of forest and backwater. Each cabin is compact and equipped with a fully functional kitchenette, two beds, bathroom, and outdoor deck."
+  },
+  {
+    question: "Is this a hotel?",
+    answer: "No — it's a glamping experience, closer to stylish camping than a hotel stay."
+  },
+  {
+    question: "Is there Wi-Fi/network coverage?",
+    answer: "Mobile network can be spotty; the property has Jio coverage and inverter backup for power cuts."
+  },
+  {
+    question: "Is there a TV?",
+    answer: "No — the property is designed for disconnecting and immersing in nature."
+  },
+  {
+    question: "What's the check-in/checkout time?",
+    answer: "Check-in 1 PM, checkout 11 AM. Late checkout available on request, subject to availability and extra cost."
+  },
+  {
+    question: "Is drinking water available?",
+    answer: "Yes, via an on-site water purifier."
+  },
+  {
+    question: "What should I pack?",
+    answer: "Seasonal clothing, hiking shoes, insect repellent, and binoculars if birdwatching."
+  },
+  {
+    question: "What can I do there?",
+    answer: "Hike to the backwaters, explore forest trails, birdwatch, cycle, or just soak in the quiet."
+  },
+  {
+    question: "Where exactly is it located?",
+    answer: "Mauje Mose, Taluka Velhe, District Pune — about an hour from Pune city."
+  },
+  {
+    question: "How do I get to the property?",
+    answer: "There's a bridge en route that shows as closed/non-functional on Google Maps — it's actually open and is the only route in. Cross the bridge first, then follow the property's location pin."
+  },
+  {
+    question: "Who do I contact for help getting there?",
+    answer: "A dedicated assistance number is provided closer to check-in date."
+  },
+  {
+    question: "What's the food arrangement?",
+    answer: "Cook your own using the kitchenette, bring your own ingredients, or pre-order from nearby farm stays — vendor contact details shared post-booking."
+  },
+  {
+    question: "How does check-in work?",
+    answer: "No-reception property with self-check-in via a lockbox. The lockbox code is shared on the day of check-in."
+  },
+  {
+    question: "What information will I get after booking?",
+    answer: "House manual, exact lockbox code, Wi-Fi password, caretaker's direct contact number, specific food vendor names and numbers, and exact key drop off instructions at checkout."
+  },
+  {
+    question: "What are the things to do around the property?",
+    answer: "Hiking to the backwaters, birdwatching, cycling around the area, bonfire, and stargazing."
+  },
+  {
+    question: "What is the cancellation policy?",
+    answer: "100% refund if cancelled up to 1 week before check-in."
+  }
+];
 
   const headerVariants = {
     initial: { opacity: 0, y: 30 },
