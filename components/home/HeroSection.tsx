@@ -5,8 +5,23 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
+const heroImages = [
+  '/images/drone/drone-1.jpg',
+  '/images/drone/drone-2.jpg',
+];
+
 export default function HeroSection() {
   const [isShrunk, setIsShrunk] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // Cycle background images every 6 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
+    }, 6000);
+
+    return () => clearInterval(timer);
+  }, []);
 
   // Optimized scroll toggle using a flag to prevent unnecessary state re-renders
   useEffect(() => {
@@ -29,6 +44,34 @@ export default function HeroSection() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Smooth, slow scroll down to 70% of the viewport height
+  const handleScrollDown = () => {
+    const targetPosition = window.innerHeight * 0.9;
+    const startPosition = window.scrollY;
+    const distance = targetPosition - startPosition;
+    const duration = 1200; // Duration in milliseconds (higher = slower)
+    let start: number | null = null;
+
+    // Custom ease-in-out curve for a silky smooth feel
+    const easeInOutCubic = (t: number): number =>
+      t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+    const animationStep = (timestamp: number) => {
+      if (!start) start = timestamp;
+      const progress = timestamp - start;
+      const timeFraction = Math.min(progress / duration, 1);
+      const easeProgress = easeInOutCubic(timeFraction);
+
+      window.scrollTo(0, startPosition + distance * easeProgress);
+
+      if (progress < duration) {
+        window.requestAnimationFrame(animationStep);
+      }
+    };
+
+    window.requestAnimationFrame(animationStep);
+  };
 
   // Premium snappy spring transition configuration with strict literal inference
   const springConfig = {
@@ -59,19 +102,30 @@ export default function HeroSection() {
           className="relative overflow-hidden bg-zinc-950 text-white select-none shadow-[0_30px_80px_-20px_rgba(0,0,0,0.4)] flex flex-col justify-end w-full h-full transform-gpu"
         >
           
-          {/* Background Drone Image Asset Container */}
+          {/* Background Drone Image Carousel Container */}
           <motion.div 
             animate={{ scale: isShrunk ? 1.12 : 1.05 }}
             transition={springConfig}
             className="absolute inset-0 z-0 w-full h-full"
           >
-            <Image
-              src="/images/drone/drone-1.jpg"
-              alt="Wind over Waters aerial view"
-              fill
-              priority
-              className="object-cover object-center animate-[subtle-zoom_25s_ease-out_infinite_alternate]"
-            />
+            <AnimatePresence mode="popLayout">
+              <motion.div
+                key={heroImages[currentImageIndex]}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1.8, ease: "easeInOut" }}
+                className="absolute inset-0 w-full h-full"
+              >
+                <Image
+                  src={heroImages[currentImageIndex]}
+                  alt="Wind over Waters aerial view"
+                  fill
+                  priority
+                  className="object-cover object-center animate-[subtle-zoom_25s_ease-out_infinite_alternate]"
+                />
+              </motion.div>
+            </AnimatePresence>
             
             {/* Native Contrast Pop */}
             <div className="absolute inset-0 backdrop-contrast-[1.15] backdrop-brightness-[0.95] backdrop-saturation-[1.3] pointer-events-none" />
@@ -129,11 +183,12 @@ export default function HeroSection() {
                   {/* Right Column: Interactive CTA Button */}
                   <div className="flex justify-start md:justify-end">
                     <motion.button
+                      onClick={handleScrollDown}
                       initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: 0.4 }}
                       whileHover="hover"
-                      className="relative flex items-center justify-between bg-white text-zinc-950 font-medium text-base pl-6 pr-2 py-2.5 rounded-full shadow-2xl min-w-[180px] overflow-hidden group"
+                      className="relative flex items-center justify-between bg-white text-zinc-950 font-medium text-base pl-6 pr-2 py-2.5 rounded-full shadow-2xl min-w-[180px] overflow-hidden group cursor-pointer"
                     >
                       <span className="relative z-10">Explore</span>
                       <div className="absolute inset-0 bg-gradient-to-r from-zinc-100 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />

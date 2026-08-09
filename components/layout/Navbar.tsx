@@ -2,9 +2,20 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 
 export default function Navbar() {
+  const pathname = usePathname();
+
+  // Dynamic destination based on current page
+  const bookNowHref =
+    pathname === "/cabin"
+      ? "https://www.airbnb.co.in/rooms/1233873689915292788?source_impression_id=p3_1786212915_P3nnVgfUeMWInI2U"
+      : "/cabin";
+
+  const isExternal = bookNowHref.startsWith("http");
+
   return (
     <header className="hidden sm:block absolute top-0 left-0 w-full bg-transparent z-50 px-4 md:px-12 py-4">
       <div className="max-w-[1440px] mx-auto flex items-center justify-between">
@@ -32,7 +43,6 @@ export default function Navbar() {
         </motion.div>
 
         {/* Center Navigation Pill Container */}
-        {/* Glassmorphic by default -> Solid Black on high-contrast/light content via CSS variable state or group hover */}
         <motion.nav 
           initial={{ opacity: 0, y: -20, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -55,7 +65,9 @@ export default function Navbar() {
           className="hidden md:block"
         >
           <Link 
-            href="/book" 
+            href={bookNowHref}
+            target={isExternal ? "_blank" : "_self"}
+            rel={isExternal ? "noopener noreferrer" : undefined}
             className="inline-flex h-11 px-7 items-center justify-center rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-xs font-semibold tracking-wide shadow-md transition-all duration-300 hover:bg-black hover:border-zinc-800 active:scale-[0.98]"
           >
             Book Now

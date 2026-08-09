@@ -17,12 +17,24 @@ export default function FAQSection() {
 
   const faqs = [
     {
-      question: "What kind of property is this?",
-      answer: "Two premium prefab tiny cabins (\"Coons\"), built by The Coon Co. and installed on-site, nestled into the forest along the Varasgaon backwaters near Panshet.",
+      question: "Is this a resort or hotel?",
+      answer: "No, there's no reception, restaurant, or on-site staff. This property consists of two standalone, self-contained, lakeside cabins which are installed side-by-side. It's designed for glamping, adventure seekers, and nature lovers who are planning to disconnect.",
     },
     {
-      question: "Is this a hotel?",
-      answer: "No — it's an immersive glamping experience, closer to stylish, comfortable camping than a traditional hotel stay.",
+      question: "Will there be network and phone signal?",
+      answer: "Jio tends to work, but coverage is patchy. Wi-Fi is basic and not dependable for work. Plan for occasional power cuts and disconnection.",
+    },
+    {
+      question: "Is there a caretaker on-site?",
+      answer: "No, there's no staff living on the property, but the team is available on call for anything you need.",
+    },
+    {
+      question: "How do meals work?",
+      answer: "There's a kitchenette with an induction stove, fridge, and microwave, so you can self-cook, bring your own food/ingredients, or pre-order from a nearby farmstay.",
+    },
+    {
+      question: "Is the property and road safe?",
+      answer: "Yes. The property is fully fenced, including between the two cabins for privacy, and there’s a farmstay right next door. It's remote by design, being a glamping property, but the road leads directly to the cabins, so just drive up, park, and walk down the steps to your cabins. We'd recommend arriving before dark.",
     },
     {
       question: "What's the check-in/checkout time?",
@@ -31,10 +43,6 @@ export default function FAQSection() {
     {
       question: "How do I get to the property?",
       answer: "There's a bridge en route that shows as closed or non-functional on Google Maps — it's actually completely open and is the only route in. Cross the bridge first, then follow the property's shared location pin.",
-    },
-    {
-      question: "What's the food arrangement?",
-      answer: "You can cook your own meals using the on-site kitchenette (feel free to bring your own ingredients) or pre-order local meals from nearby farm stays. Vendor contact details are shared right after booking.",
     },
     {
       question: "How does check-in work?",

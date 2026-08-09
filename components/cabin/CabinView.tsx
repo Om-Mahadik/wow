@@ -11,7 +11,7 @@ import CabinThingsToDo from "./CabinThingsToDo";
 
 export default function CabinView() {
   return (
-    <div className="w-full flex flex-col p-0 m-0 overflow-x-hidden">
+    <div className="w-full flex flex-col p-0 m-0 overflow-x-hidden scroll-smooth">
       <section className="w-full">
         <CabinHero />
       </section>
@@ -21,7 +21,7 @@ export default function CabinView() {
       <section className="w-full">
         <CabinOverview />
       </section>
-      <section className="w-full">
+      <section id="amenities" className="w-full">
         <CabinAmenities />
       </section>
       
@@ -33,16 +33,19 @@ export default function CabinView() {
       <section className="w-full">
         <CabinKitchen />
       </section>
-      <section className="w-full">
+      <section id="location" className="w-full">
         <CabinLocation />
       </section>
-      <section className="w-full">
+
+      {/* Target Section: Reviews */}
+      <section id="reviews" className="w-full scroll-mt-10">
         <CabinReviews />
       </section>
-      <section className="w-full">
+
+      {/* Target Section: Rules */}
+      <section id="rules" className="w-full scroll-mt-10">
         <CabinRules />
       </section>
-
     </div>
   );
 }

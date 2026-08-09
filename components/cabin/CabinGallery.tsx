@@ -81,8 +81,8 @@ export default function CabinGallery() {
     },
     {
       id: "external",
-      category: "External",
-      subtitle: "Beautiful External Spaces for Entertainment",
+      category: "Exterior",
+      subtitle: "Beautiful Exterior Spaces for Entertainment",
       images: [
         { id: "external-1", src: "/images/external/external-1.avif" },
         { id: "external-2", src: "/images/external/external-2.jpg" },

@@ -21,7 +21,7 @@ export default function ShowcaseSection() {
   const textRotateY = useTransform(smoothProgress, [0, 0.45], [8, 0]);
   const opacity = useTransform(smoothProgress, [0, 0.35], [0, 1]);
 
-  const text = "Guess what? This cozy glass cabin in the Panshet forest is the ultimate nature stay. No city noise, just slow mornings, stars, and quiet vibes. The perfect reset.";
+  const text = "This glamping cabin in Panshet is the ultimate nature stay. No city noise, just slow mornings, stars and quiet vibes. The perfect reset.";
   const words = text.split(" ");
 
   return (

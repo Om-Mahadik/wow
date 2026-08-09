@@ -20,28 +20,10 @@ const GALLERY_DATA = [
       { id: "deck-8", src: "/images/deck/deck-8.heic" },
     ]
   },
-  {
-    id: "kitchen",
-    category: "Kitchen",
-    subtitle: "Modern Kitchen for Culinary Delights",
-    images: [
-      { id: "kitchen-1", src: "/images/kitchen/kitchen-1.jpg" },
-      { id: "kitchen-2", src: "/images/kitchen/kitchen-2.avif" },
-    ]
-  },
-  {
-    id: "bathroom",
-    category: "Bathroom",
-    subtitle: "EClean & NeatBathroom for Relaxation",
-    images: [
-      { id: "bathroom-1", src: "/images/bathroom/bathroom-1.jpg" },
-      { id: "bathroom-2", src: "/images/bathroom/bathroom-2.jpg" },
-      { id: "bathroom-3", src: "/images/bathroom/bathroom-3.png" },
-    ]
-  },
+
   {
     id: "external",
-    category: "External",
+    category: "Exterior",
     subtitle: "Beautiful External Spaces for Entertainment",
     images: [
       { id: "external-1", src: "/images/external/external-1.avif" },
@@ -54,6 +36,7 @@ const GALLERY_DATA = [
       { id: "external-8", src: "/images/external/external-8.avif" },
     ]
   },
+
   {
     id: "cabin",
     category: "Cabin",
@@ -67,6 +50,29 @@ const GALLERY_DATA = [
       { id: "cabin-6", src: "/images/cabin/cabin-6.jpg" },
     ]
   },
+
+  {
+    id: "kitchen",
+    category: "Kitchen",
+    subtitle: "Modern Kitchen for Culinary Delights",
+    images: [
+      { id: "kitchen-1", src: "/images/kitchen/kitchen-1.jpg" },
+      { id: "kitchen-2", src: "/images/kitchen/kitchen-2.avif" },
+    ]
+  },
+  
+  {
+    id: "bathroom",
+    category: "Bathroom",
+    subtitle: "EClean & NeatBathroom for Relaxation",
+    images: [
+      { id: "bathroom-1", src: "/images/bathroom/bathroom-1.jpg" },
+      { id: "bathroom-2", src: "/images/bathroom/bathroom-2.jpg" },
+      { id: "bathroom-3", src: "/images/bathroom/bathroom-3.png" },
+    ]
+  },
+
+
   {
     id: "parking",
     category: "Parking",

@@ -10,7 +10,6 @@ export default function ContactForm() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    phone: "",
     preferredDate: "",
     durationDays: "1 Day",
     message: "",
@@ -56,17 +55,29 @@ export default function ContactForm() {
     e.preventDefault();
     setIsSubmitting(true);
 
+    const whatsappNumber = "917387041204";
+
+    const textMessage =
+      `*Booking Inquiry - Wind Over Waters*\n\n` +
+      `*Name:* ${formData.name || "Not provided"}\n` +
+      `*Email:* ${formData.email || "Not provided"}\n` +
+      `*Preferred Date:* ${formData.preferredDate || "Flexible / Not specified"}\n` +
+      `*Duration:* ${formData.durationDays}\n` +
+      `*Message:* ${formData.message || "No additional requirements."}`;
+
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(textMessage)}`;
+
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitted(true);
-    }, 800);
+      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    }, 600);
   };
 
   const handleReset = () => {
     setFormData({
       name: "",
       email: "",
-      phone: "",
       preferredDate: "",
       durationDays: "1 Day",
       message: "",
@@ -164,7 +175,7 @@ export default function ContactForm() {
                   Get in Touch
                 </h2>
                 <p className="text-base text-zinc-500 font-light leading-relaxed">
-                  Fill out the form below and we will respond to you shortly.
+                  Fill out your booking details below and submit to launch a direct WhatsApp chat with our team.
                 </p>
               </motion.div>
 
@@ -177,35 +188,35 @@ export default function ContactForm() {
                     onSubmit={handleSubmit}
                     className="flex flex-col space-y-7"
                   >
-                    {/* 1. Full Name */}
-                    <motion.div variants={fieldVariants} className="relative flex flex-col">
-                      <motion.label
-                        htmlFor="name"
-                        animate={{
-                          y: focusedField === "name" || formData.name ? -10 : 18,
-                          scale: focusedField === "name" || formData.name ? 0.8 : 1,
-                          color: focusedField === "name" ? "#18181b" : "#71717a",
-                        }}
-                        transition={{ duration: 0.2, ease: smoothEase }}
-                        className="absolute left-3.5 top-0 pointer-events-none origin-top-left font-semibold text-xs uppercase tracking-wider z-10 bg-white px-1.5 rounded-md"
-                      >
-                        Full Name <span className="text-rose-500">*</span>
-                      </motion.label>
-                      <input
-                        id="name"
-                        type="text"
-                        required
-                        value={formData.name}
-                        onFocus={() => setFocusedField("name")}
-                        onBlur={() => setFocusedField(null)}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        placeholder={focusedField === "name" ? "e.g. Rahul Sharma" : ""}
-                        className="w-full px-4 pt-4 pb-3 rounded-2xl bg-white border border-zinc-200/80 text-base text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:border-zinc-900 focus:ring-1 focus:ring-zinc-900 transition-all duration-200"
-                      />
-                    </motion.div>
-
-                    {/* 2. Email & Phone Row */}
+                    {/* 1. Full Name & Email Row */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-7 sm:gap-5">
+                      {/* Full Name */}
+                      <motion.div variants={fieldVariants} className="relative flex flex-col">
+                        <motion.label
+                          htmlFor="name"
+                          animate={{
+                            y: focusedField === "name" || formData.name ? -10 : 18,
+                            scale: focusedField === "name" || formData.name ? 0.8 : 1,
+                            color: focusedField === "name" ? "#18181b" : "#71717a",
+                          }}
+                          transition={{ duration: 0.2, ease: smoothEase }}
+                          className="absolute left-3.5 top-0 pointer-events-none origin-top-left font-semibold text-xs uppercase tracking-wider z-10 bg-white px-1.5 rounded-md"
+                        >
+                          Full Name <span className="text-rose-500">*</span>
+                        </motion.label>
+                        <input
+                          id="name"
+                          type="text"
+                          required
+                          value={formData.name}
+                          onFocus={() => setFocusedField("name")}
+                          onBlur={() => setFocusedField(null)}
+                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                          placeholder={focusedField === "name" ? "e.g. Rahul Sharma" : ""}
+                          className="w-full px-4 pt-4 pb-3 rounded-2xl bg-white border border-zinc-200/80 text-base text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:border-zinc-900 focus:ring-1 focus:ring-zinc-900 transition-all duration-200"
+                        />
+                      </motion.div>
+
                       {/* Email */}
                       <motion.div variants={fieldVariants} className="relative flex flex-col">
                         <motion.label
@@ -232,36 +243,9 @@ export default function ContactForm() {
                           className="w-full px-4 pt-4 pb-3 rounded-2xl bg-white border border-zinc-200/80 text-base text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:border-zinc-900 focus:ring-1 focus:ring-zinc-900 transition-all duration-200"
                         />
                       </motion.div>
-
-                      {/* Phone */}
-                      <motion.div variants={fieldVariants} className="relative flex flex-col">
-                        <motion.label
-                          htmlFor="phone"
-                          animate={{
-                            y: focusedField === "phone" || formData.phone ? -10 : 18,
-                            scale: focusedField === "phone" || formData.phone ? 0.8 : 1,
-                            color: focusedField === "phone" ? "#18181b" : "#71717a",
-                          }}
-                          transition={{ duration: 0.2, ease: smoothEase }}
-                          className="absolute left-3.5 top-0 pointer-events-none origin-top-left font-semibold text-xs uppercase tracking-wider z-10 bg-white px-1.5 rounded-md"
-                        >
-                          Phone Number <span className="text-rose-500">*</span>
-                        </motion.label>
-                        <input
-                          id="phone"
-                          type="tel"
-                          required
-                          value={formData.phone}
-                          onFocus={() => setFocusedField("phone")}
-                          onBlur={() => setFocusedField(null)}
-                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                          placeholder={focusedField === "phone" ? "+91 98765 43210" : ""}
-                          className="w-full px-4 pt-4 pb-3 rounded-2xl bg-white border border-zinc-200/80 text-base text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:border-zinc-900 focus:ring-1 focus:ring-zinc-900 transition-all duration-200"
-                        />
-                      </motion.div>
                     </div>
 
-                    {/* 3. Custom Date Picker & Custom Dropdown Row */}
+                    {/* 2. Custom Date Picker & Custom Dropdown Row */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-7 sm:gap-5">
                       {/* Custom Date Picker */}
                       <motion.div variants={fieldVariants} ref={datePickerRef} className="relative flex flex-col">
@@ -422,7 +406,7 @@ export default function ContactForm() {
                       </motion.div>
                     </div>
 
-                    {/* 4. Special Message / Requirements */}
+                    {/* 3. Special Message / Requirements */}
                     <motion.div variants={fieldVariants} className="relative flex flex-col">
                       <motion.label
                         htmlFor="message"
@@ -453,7 +437,7 @@ export default function ContactForm() {
                       </div>
                     </motion.div>
 
-                    {/* 5. Submit Button */}
+                    {/* 4. Submit Button */}
                     <motion.div variants={fieldVariants} className="pt-2">
                       <button
                         type="submit"
@@ -463,7 +447,7 @@ export default function ContactForm() {
                         {isSubmitting ? (
                           <span className="inline-block w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                         ) : (
-                          "Submit Message"
+                          "Continue on WhatsApp"
                         )}
                       </button>
                     </motion.div>
@@ -483,9 +467,9 @@ export default function ContactForm() {
                       </svg>
                     </div>
                     <div className="space-y-1">
-                      <h3 className="text-xl font-bold text-zinc-900">Message Sent</h3>
+                      <h3 className="text-xl font-bold text-zinc-900">Redirecting to WhatsApp</h3>
                       <p className="text-base text-zinc-500 font-light max-w-sm">
-                        Thank you, <span className="font-semibold text-zinc-800">{formData.name}</span>. Your message has been submitted. We will reach out to you shortly.
+                        Thank you, <span className="font-semibold text-zinc-800">{formData.name}</span>. Your details have been pre-filled. We will review your request and get back to you shortly.
                       </p>
                     </div>
                     <button

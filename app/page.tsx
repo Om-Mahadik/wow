@@ -12,7 +12,7 @@ import ShowcaseSection from "@/components/home/ShowcaseSection";
 import MinimalLivingExplain from "@/components/home/MinimalLivingExplain";
 import BookingWidget from "@/components/home/BookingWidget";
 import FeaturedCabin from "@/components/home/FeaturedCabin";
-import FAQSection from "@/components/faqs/FAQSection";
+import FAQSection from "@/components/home/FAQsSection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
 
 export default function Home() {

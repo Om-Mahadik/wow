@@ -3,12 +3,22 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function NavbarMobile() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
   const smoothEase = [0.16, 1, 0.3, 1] as const; 
+
+  // Dynamic destination for the Book button
+  const bookNowHref =
+    pathname === "/cabin"
+      ? "https://www.airbnb.co.in/rooms/1233873689915292788?source_impression_id=p3_1786212915_P3nnVgfUeMWInI2U"
+      : "/cabin";
+
+  const isExternal = bookNowHref.startsWith("http");
 
   const rowOne = [
     { name: "Home", path: "/" },
@@ -95,10 +105,10 @@ export default function NavbarMobile() {
         )}
       </AnimatePresence>
 
-      {/* 2. Global Mobile Header Frame (Swapped absolute to fixed for sticky behavior) */}
+      {/* 2. Global Mobile Header Frame */}
       <header className="sm:hidden fixed top-4 left-0 w-full z-50 flex items-center justify-between px-0 select-none">
         
-        {/* Left Side Dynamic Logo Capsule — Morphing Size Based on Open State */}
+        {/* Left Side Dynamic Logo Capsule */}
         <motion.div
           animate={{
             width: isOpen ? "180px" : "150px",
@@ -127,7 +137,7 @@ export default function NavbarMobile() {
           </Link>
         </motion.div>
 
-        {/* Right Side - Static Anchor Trigger & Top-Right Pinned Directory Grid */}
+        {/* Right Side - Static Anchor Trigger & Directory Grid */}
         <div className="pr-4 relative z-50 flex flex-col items-end">
           
           <button
@@ -202,7 +212,9 @@ export default function NavbarMobile() {
                   <motion.div variants={pillVariants}>
                     <Link
                       onClick={() => setIsOpen(false)}
-                      href="/book"
+                      href={bookNowHref}
+                      target={isExternal ? "_blank" : "_self"}
+                      rel={isExternal ? "noopener noreferrer" : undefined}
                       className="h-12 px-6 bg-white text-black font-bold text-sm uppercase tracking-wider rounded-full flex items-center justify-center border border-white hover:bg-zinc-100 active:scale-95 transition-all shadow-none"
                     >
                       Book Stay
