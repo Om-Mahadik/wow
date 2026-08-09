@@ -7,6 +7,7 @@ import Image from "next/image";
 export default function CabinReviews() {
   const [activeCategoryIndex, setActiveCategoryIndex] = useState(0);
   const [selectedLightboxImage, setSelectedLightboxImage] = useState<string | null>(null);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   
   // Navigation button indicator states
   const [canScrollLeft, setCanScrollLeft] = useState(false);
@@ -25,33 +26,77 @@ export default function CabinReviews() {
     "/images/deck-4.jpg",
   ];
 
+  // Primary Carousel Testimonials + Full Drawer Review Data from standard images
   const testimonials = [
     {
       num: "01",
-      platform: "google",
-      name: "Om Mahadik",
+      platform: "airbnb",
+      name: "Sabalil",
       avatar: "/images/deck-1.jpg",
-      date: "1 month ago",
-      text: "Bro, it's an absolute masterpiece. Waking up to total lake fog through pristine container glass walls felt entirely surreal! 🌲",
+      date: "July 2025",
+      badgeText: "10 years on Airbnb",
+      text: "This is a magical place. We had a great experience. The view along with the serenity and calmness of the surroundings makes it an ideal getaway which is not very far from the city. The lake below and trails around makes it a complete adventure. This was our second time at this place and both the times, the experience was worth it. A must visit during monsoons as the place turns into a wonderland.",
       attachedImages: ["/images/deck-2.jpg", "/images/deck-3.jpg"],
     },
     {
       num: "02",
       platform: "airbnb",
-      name: "Priya Sharma",
+      name: "Priyanka",
       avatar: "/images/deck-2.jpg",
-      date: "2 months ago",
-      text: "Super close to Pune yet feels worlds away. The minimal aesthetic layout combined with absolute privacy makes this our new favorite weekend reset zone.",
+      date: "1 week ago",
+      badgeText: "6 years on Airbnb",
+      text: "This is one of the most beautiful places I have ever experienced, especially for someone from Mumbai, where spending time in nature like this is rare. I loved every moment of my stay. I wish I could have stayed longer, waking up to birdsong, a gentle natural breeze on my face, and the water body right in front of my room. Every moment felt magical, almost like being in heaven.",
       attachedImages: [],
     },
     {
       num: "03",
-      platform: "google",
-      name: "Rohan Das",
+      platform: "airbnb",
+      name: "Mitalee",
       avatar: "/images/deck-3.jpg",
-      date: "3 months ago",
-      text: "The architectural design of the containers is brilliant. Everything from the tight, black aesthetic accent line choices to the bonfire space feels intentional.",
+      date: "November 2024",
+      badgeText: "14 years on Airbnb",
+      text: "We wanted to get away from the city, and just be by ourselves one with nature. And that's what we got. Had the best kinda-glamping experience, you're completely in nature with all the amenities to make it comfortable. We cooked, swam, made a bonfire and just had the nicest time in the place. It was our first experience in a tiny home concept and was the coolest. Will definitely come back :)",
       attachedImages: ["/images/deck-4.jpg"],
+    },
+    {
+      num: "04",
+      platform: "airbnb",
+      name: "Sangram",
+      avatar: "/images/deck-4.jpg",
+      date: "2 weeks ago",
+      badgeText: "1 year on Airbnb",
+      text: "All of the hosts are very responsive. The place is private, cozy, serene and rugged at the same time. Wind over waters proves its name. The breeze above the Mutha river keeps you cool. Ample parking space to park the car. Hosts provided all of the manuals about usage of the property. Best wishes ❤️",
+      attachedImages: [],
+    },
+    {
+      num: "05",
+      platform: "airbnb",
+      name: "Pallav",
+      avatar: "/images/deck-1.jpg",
+      date: "May 2026",
+      badgeText: "10 years on Airbnb",
+      text: "Its a beautiful and nicely kept property, perfect getaway for couples. We had a peaceful stay, host is also supportive.",
+      attachedImages: [],
+    },
+    {
+      num: "06",
+      platform: "airbnb",
+      name: "Arkajyoti",
+      avatar: "/images/deck-2.jpg",
+      date: "May 2026",
+      badgeText: "3 years on Airbnb",
+      text: "A cosy secluded cabin in the middle of the wilderness. Perfect for people who are looking to get away from the crowd. Loved the experience. There's a small pathway to the water body which we loved. Fireflies putting up a show at night which was magical. Starry skies with cool breeze blowing made the overall experience amazing. Would love to come back again.",
+      attachedImages: [],
+    },
+    {
+      num: "07",
+      platform: "airbnb",
+      name: "Aalish",
+      avatar: "/images/deck-3.jpg",
+      date: "February 2025",
+      badgeText: "5 years on Airbnb",
+      text: "A Truly Serene Escape\nI had the most incredible stay at this Airbnb, nestled in the heart of nature with the beautiful Mutha River right by. The surroundings are absolutely breathtaking—lush greenery, peaceful sounds of the river, and an atmosphere that instantly makes you feel at peace. It was the perfect escape from the hustle and bustle of daily life. The calmness of the place is surreal, almost like being in a dream.\nWhether you're looking to unwind, immerse yourself in nature, or simply enjoy some quiet time by the river, this place offers everything you need.\nHighly recommend for anyone seeking tranquility and a close connection to nature. I'll definitely be coming back!",
+      attachedImages: [],
     },
   ];
 
@@ -81,7 +126,7 @@ export default function CabinReviews() {
   // Auto-scroll cycle timer
   useEffect(() => {
     const interval = setInterval(() => {
-      if (!scrollTrackRef.current || selectedLightboxImage) return;
+      if (!scrollTrackRef.current || selectedLightboxImage || isDrawerOpen) return;
       
       const nextIndex = (activeCategoryIndex + 1) % testimonials.length;
       const container = scrollTrackRef.current;
@@ -98,7 +143,7 @@ export default function CabinReviews() {
     }, 5500);
 
     return () => clearInterval(interval);
-  }, [activeCategoryIndex, testimonials.length, selectedLightboxImage]);
+  }, [activeCategoryIndex, testimonials.length, selectedLightboxImage, isDrawerOpen]);
 
   const containerVariants = {
     initial: {},
@@ -144,7 +189,7 @@ export default function CabinReviews() {
               <div className="flex items-center justify-between w-full">
                 <div className="flex flex-col">
                   <div className="flex items-center gap-2">
-                    <span className="text-5xl md:text-6xl font-black tracking-tighter text-zinc-950">4.73</span>
+                    <span className="text-5xl md:text-6xl font-black tracking-tighter text-zinc-950">4.92</span>
                     <div className="mt-1"><StarIcon /></div>
                   </div>
                 </div>
@@ -159,12 +204,12 @@ export default function CabinReviews() {
                 </div>
               </div>
               
-              {/* Google Verified Banner */}
+              {/* Verified Banner */}
               <div className="flex items-center gap-2.5 bg-zinc-50/80 border border-zinc-200/60 rounded-xl py-2.5 px-3.5 w-full shadow-2xs">
-                <GoogleIcon className="w-5 h-5" />
+                <AirbnbIcon className="w-5 h-5 text-[#FF5A5F]" />
                 <div className="w-[1px] h-3.5 bg-zinc-200" />
                 <span className="text-xs font-semibold tracking-wide text-zinc-800">
-                  Verified reviews on Google
+                  Verified guest reviews on Airbnb
                 </span>
               </div>
             </motion.div>
@@ -240,18 +285,14 @@ export default function CabinReviews() {
                             {review.name}
                           </span>
                           <span className="text-xs text-zinc-400 font-light tracking-wide mt-0.5 group-hover:text-zinc-400 transition-colors duration-500">
-                            {review.date} • {review.platform === "airbnb" ? "Airbnb review" : "Google review"}
+                            {review.date} • {review.badgeText}
                           </span>
                         </div>
                       </div>
 
                       {/* Brand Icon Badge */}
                       <div className="opacity-60 group-hover:opacity-40 transition-opacity duration-500 shrink-0">
-                        {review.platform === "airbnb" ? (
-                          <AirbnbIcon className="w-5 h-5 text-[#FF5A5F]" />
-                        ) : (
-                          <GoogleIcon className="w-4.5 h-4.5" />
-                        )}
+                        <AirbnbIcon className="w-5 h-5 text-[#FF5A5F]" />
                       </div>
                     </div>
 
@@ -259,7 +300,7 @@ export default function CabinReviews() {
                       {[...Array(5)].map((_, idx) => <StarIcon key={idx} />)}
                     </div>
 
-                    <p className="text-sm md:text-base text-zinc-600 font-light leading-relaxed tracking-wide group-hover:text-zinc-300 transition-colors duration-500">
+                    <p className="text-sm md:text-base text-zinc-600 font-light leading-relaxed tracking-wide group-hover:text-zinc-300 transition-colors duration-500 line-clamp-6 whitespace-pre-line">
                       {review.text}
                     </p>
 
@@ -285,13 +326,105 @@ export default function CabinReviews() {
           </div>
         </div>
 
-        {/* Action Button */}
+        {/* Interactive Open Actions Button */}
         <motion.div variants={itemVariants} className="w-full pt-2">
-          <button className="w-full py-4 bg-zinc-50 hover:bg-zinc-100/80 active:scale-[0.99] transition-all duration-300 rounded-2xl border border-zinc-200/60 flex items-center justify-center cursor-pointer text-xs font-bold tracking-[0.15em] uppercase text-zinc-800 hover:text-black shadow-2xs">
-            Read all reviews
+          <button 
+            onClick={() => setIsDrawerOpen(true)}
+            className="w-full py-4 bg-zinc-50 hover:bg-zinc-100/80 active:scale-[0.99] transition-all duration-300 rounded-2xl border border-zinc-200/60 flex items-center justify-center cursor-pointer text-xs font-bold tracking-[0.15em] uppercase text-zinc-800 hover:text-black shadow-2xs group"
+          >
+            Show all {testimonials.length} reviews
           </button>
         </motion.div>
       </motion.div>
+
+      {/* FULL REVIEWS BOTTOM DRAWER MODAL */}
+      <AnimatePresence>
+        {isDrawerOpen && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsDrawerOpen(false)}
+              className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm"
+            />
+
+            <motion.div
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              exit={{ y: "100%" }}
+              transition={{ duration: 0.6, ease: smoothEase }}
+              className="fixed bottom-0 left-0 right-0 z-50 max-h-[88vh] overflow-y-auto bg-white rounded-t-[36px] p-6 md:p-10 flex justify-center border-t border-zinc-100 shadow-2xl"
+            >
+              <div className="w-full md:max-w-[60vw] flex flex-col relative">
+                <div className="w-12 h-1 bg-zinc-200 rounded-full mx-auto mb-6 shrink-0" />
+                
+                <div className="flex items-center justify-between pb-6 border-b border-zinc-100">
+                  <div className="flex flex-col">
+                    <h3 className="text-2xl font-bold tracking-tight text-zinc-900">Guest Reviews</h3>
+                    <p className="text-xs text-zinc-400 font-light mt-0.5">
+                      Showing all verified reviews from Airbnb stays
+                    </p>
+                  </div>
+                  <button 
+                    onClick={() => setIsDrawerOpen(false)}
+                    className="w-9 h-9 bg-zinc-100 hover:bg-zinc-200 rounded-full flex items-center justify-center text-zinc-800 transition-colors cursor-pointer text-sm font-bold"
+                  >
+                    ✕
+                  </button>
+                </div>
+
+                {/* List of Reviews inside Drawer */}
+                <div className="flex flex-col gap-8 pt-8 pb-16">
+                  {testimonials.map((review, idx) => (
+                    <div key={idx} className="flex flex-col space-y-3 pb-8 border-b border-zinc-100 last:border-b-0">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-3.5">
+                          <div className="relative w-11 h-11 rounded-full overflow-hidden bg-zinc-200 border border-zinc-200/40 shrink-0">
+                            <Image src={review.avatar} alt={review.name} fill unoptimized className="object-cover" />
+                          </div>
+                          <div className="flex flex-col">
+                            <span className="text-base font-semibold tracking-tight text-zinc-900">
+                              {review.name}
+                            </span>
+                            <span className="text-xs text-zinc-400 font-light tracking-wide">
+                              {review.date} • {review.badgeText}
+                            </span>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-1">
+                          {[...Array(5)].map((_, starIdx) => (
+                            <StarIcon key={starIdx} />
+                          ))}
+                        </div>
+                      </div>
+
+                      <p className="text-sm md:text-base text-zinc-600 font-light leading-relaxed tracking-wide whitespace-pre-line pt-1">
+                        {review.text}
+                      </p>
+
+                      {review.attachedImages && review.attachedImages.length > 0 && (
+                        <div className="flex gap-3 pt-2">
+                          {review.attachedImages.map((imgSrc, imgIdx) => (
+                            <div 
+                              key={imgIdx} 
+                              onClick={() => setSelectedLightboxImage(imgSrc)}
+                              className="relative w-20 h-20 rounded-2xl overflow-hidden border border-zinc-200/80 bg-white shadow-2xs shrink-0 cursor-zoom-in active:scale-95 transition-all duration-300"
+                            >
+                              <Image src={imgSrc} alt="Review snapshot" fill unoptimized className="object-cover hover:scale-105 transition-transform duration-500" />
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
 
       {/* LIGHTBOX MODAL */}
       <AnimatePresence>
@@ -330,17 +463,6 @@ function StarIcon() {
   return (
     <svg className="w-4 h-4 md:w-4.5 md:h-4.5 text-amber-400 fill-amber-400 shrink-0" viewBox="0 0 24 24">
       <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-    </svg>
-  );
-}
-
-function GoogleIcon({ className = "w-4 h-4" }: { className?: string }) {
-  return (
-    <svg className={`${className} shrink-0`} viewBox="0 0 24 24">
-      <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v3.92h6.61c-.29 1.5-1.14 2.77-2.4 3.63v3.02h3.86c2.26-2.08 3.56-5.14 3.56-8.5z" />
-      <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3.02c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.13C3.26 21.35 7.37 24 12 24z" />
-      <path fill="#FBBC05" d="M5.27 14.27c-.24-.72-.38-1.49-.38-2.27s.14-1.55.38-2.27V6.6H1.29C.47 8.23 0 10.06 0 12s.47 3.77 1.29 5.4l3.98-3.13z" />
-      <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.37 0 3.26 2.65 1.29 6.6l3.98 3.13c.95-2.85 3.6-4.98 6.73-4.98z" />
     </svg>
   );
 }

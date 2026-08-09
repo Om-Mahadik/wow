@@ -7,7 +7,7 @@ interface HomeAirbnbBannerProps {
   url?: string;
 }
 
-export default function HomeAirbnbBanner({ url = "https://airbnb.com" }: HomeAirbnbBannerProps) {
+export default function HomeAirbnbBanner({ url = "https://www.airbnb.co.in/rooms/1233873689915292788?source_impression_id=p3_1786270078_P3IJ2HBrqqao_lqg" }: HomeAirbnbBannerProps) {
   const smoothEase = [0.25, 1, 0.5, 1] as const;
 
   const containerVariants = {
