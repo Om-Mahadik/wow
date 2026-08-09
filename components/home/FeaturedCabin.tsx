@@ -28,7 +28,7 @@ export default function FeaturedCabinSection({
       rating: "4.92",
       reviews: "128",
       image: "/images/deck-1.jpg",
-      url: "https://www.airbnb.com/rooms/YOUR_CABIN_1_ID",
+      url: "https://www.airbnb.co.in/rooms/1232353131595460643",
     },
     {
       name: "WOW Cabin 02",
@@ -36,20 +36,20 @@ export default function FeaturedCabinSection({
       rating: "4.89",
       reviews: "48",
       image: "/images/deck-2.jpg",
-      url: "https://www.airbnb.com/rooms/1335278453303607590",
+      url: "https://www.airbnb.co.in/rooms/1233873689915292788",
     },
   ];
 
   return (
-    <div className="w-full bg-white py-20 select-none">
+    <div className="w-full bg-white py-16 md:py-20 select-none">
       {/* Container set strictly to 80% of screen viewport width */}
       <div className="w-[80vw] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
         
         {/* COMBINED LEFT PANEL: Headline, Copy, Primary CTA & Integrated Airbnb Cards */}
         <div className="lg:col-span-7 flex flex-col space-y-8">
           
-          {/* 1. Text & Information Block */}
-          <div className="flex flex-col space-y-4">
+          {/* 1. Text & Information Block (Centered on mobile, Left-aligned on tablet/desktop) */}
+          <div className="flex flex-col space-y-4 items-center text-center md:items-start md:text-left">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-950 leading-[1.1]">
               Escape to nature, <br />
               stay in style.
@@ -62,7 +62,7 @@ export default function FeaturedCabinSection({
             <div className="pt-2">
               <Link
                 href="/cabin"
-                className="inline-flex items-center gap-3 py-3.5 px-6 bg-zinc-950 text-white rounded-2xl text-xs font-semibold tracking-wide transition-all hover:bg-zinc-800 active:scale-95 shadow-md group"
+                className="inline-flex items-center justify-center gap-3 py-3.5 px-6 bg-zinc-950 text-white rounded-2xl text-xs font-semibold tracking-wide transition-all hover:bg-zinc-800 active:scale-95 shadow-md group"
               >
                 <span>Explore Full Details</span>
                 <svg
@@ -83,7 +83,7 @@ export default function FeaturedCabinSection({
 
           {/* 2. Embedded Airbnb Booking Bar */}
           <div className="flex flex-col space-y-3 pt-2">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-zinc-400">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-zinc-400 text-center md:text-left">
               Direct Airbnb Booking Portals
             </span>
 
@@ -109,7 +109,7 @@ export default function FeaturedCabinSection({
                   </div>
 
                   {/* Info Block */}
-                  <div className="ml-3.5 flex-1 flex flex-col justify-center min-w-0">
+                  <div className="ml-3.5 flex-1 flex flex-col justify-center min-w-0 text-left">
                     <span className="text-[9px] font-medium uppercase tracking-wider text-zinc-400">
                       Book Listing
                     </span>
@@ -161,7 +161,7 @@ export default function FeaturedCabinSection({
               </div>
 
               {/* Card Details */}
-              <div className="mt-5 px-1 flex flex-col gap-1">
+              <div className="mt-5 px-1 flex flex-col gap-1 text-left">
                 
                 <div className="flex items-center justify-between text-[11px] tracking-wider text-zinc-400 uppercase font-semibold">
                   <span>{location}</span>
