@@ -38,34 +38,34 @@ export default function HomeReels() {
   const reelsData = [
     { 
       id: 1, 
-      src: "/videos/reels/reel-1.mp4", 
+      src: "/videos/reels/reel-5.mp4", 
       alt: "Morning mist over the cabin lake",
       name: "Wind over Waters",
-      instagram: "@windoverwaters",
-      avatar: "/images/profiles/avatar-1.jpg"
+      instagram: "@wind.over.waters",
+      avatar: "/brand/colour-logo.jpeg"
     },
     { 
       id: 2, 
       src: "/videos/reels/reel-2.mp4", 
       alt: "Cozy indoor fireplace vibes",
       name: "Wind over Waters",
-      instagram: "@windoverwaters",
-      avatar: "/images/profiles/avatar-1.jpg"
+      instagram: "@wind.over.waters",
+      avatar: "/brand/colour-logo.jpeg"
     },
     { 
       id: 3, 
       src: "/videos/reels/reel-3.mp4", 
       alt: "Sunlight hitting the A-frame deck",
-      name: "Sarah Jenkins",
-      instagram: "@wildtravels",
-      avatar: "/images/profiles/avatar-2.jpg"
+      name: "Wind over Waters",
+      instagram: "@wind.over.waters",
+      avatar: "/brand/colour-logo.jpeg"
     },
     { 
       id: 4, 
       src: "/videos/reels/reel-4.mp4", 
       alt: "Sunlight hitting the A-frame deck",
-      name: "Sarah Jenkins",
-      instagram: "@wildtravels",
+      name: "Wind over Waters",
+      instagram: "@wind.over.waters",
       avatar: "/brand/colour-logo.jpeg"
     },
   ];
@@ -106,16 +106,16 @@ export default function HomeReels() {
   };
 
   return (
-    <div className="w-full flex justify-center bg-white select-none pt-16 pb-12 overflow-hidden">
+    <div className="w-full flex justify-center bg-white select-none pt-10 pb-8 overflow-hidden">
       <motion.div
         variants={containerVariants}
         initial="initial"
         whileInView="animate"
         viewport={{ once: true, margin: "-10%" }}
-        className="w-full md:max-w-[85vw] flex flex-col items-center px-4 md:px-0 space-y-6"
+        className="w-full max-w-[80vw] flex flex-col items-center px-2 md:px-0 space-y-5"
       >
         {/* Straightforward Centered Header Stack */}
-        <div className="space-y-2 text-center flex flex-col items-center">
+        <div className="space-y-1.5 text-center flex flex-col items-center">
           <motion.div variants={fadeInUpVariants} className="overflow-hidden py-0.5">
             <h2 className="text-3xl font-bold tracking-tight text-zinc-900 md:text-4xl">
               Watch Our Reels
@@ -129,21 +129,21 @@ export default function HomeReels() {
           </motion.p>
         </div>
 
-        {/* Cinematic Horizontal Peek Track Slider */}
+        {/* Cinematic Horizontal Track / Grid */}
         <motion.div 
           variants={fadeInUpVariants}
-          className="w-full pt-4 cursor-grab active:cursor-grabbing"
+          className="w-full pt-1 cursor-grab active:cursor-grabbing"
         >
-          {/* Mobile item min-width changed to 76% to give a larger, distinct visual hint of the upcoming track item */}
-          <div className="flex overflow-x-auto gap-6 scrollbar-none snap-x snap-mandatory px-0 pb-4 max-w-full after:content-[''] after:inline-block after:min-w-[20%] after:shrink-0 md:after:hidden md:grid md:grid-cols-4">
+          {/* Reduced gap from gap-6/gap-5 down to gap-3 */}
+          <div className="flex overflow-x-auto gap-3 scrollbar-none snap-x snap-mandatory px-0 pb-3 max-w-full justify-start md:justify-center after:content-[''] after:inline-block after:min-w-[10%] after:shrink-0 md:after:hidden md:grid md:grid-cols-4">
             {reelsData.map((reel) => (
               <div 
                 key={reel.id} 
-                className="min-w-[76%] md:min-w-0 snap-start"
+                className="min-w-[62%] sm:min-w-[42%] md:min-w-0 snap-start flex justify-center"
               >
-                <div className="w-full flex flex-col space-y-4">
+                <div className="w-full max-w-[260px] flex flex-col space-y-2.5">
                   
-                  {/* Interactive Card Canvas — Completely Borderless */}
+                  {/* Interactive Card Canvas — Restored 9:16 vertical ratio with compact width */}
                   <motion.div 
                     whileTap={{ scale: 0.98 }}
                     transition={{ duration: 0.4, ease: smoothEase }}
@@ -165,15 +165,15 @@ export default function HomeReels() {
                     {/* Premium UI Sound State Overlay Element */}
                     <button
                       onClick={(e) => toggleMute(reel.id, e)}
-                      className="absolute bottom-5 right-5 z-20 p-3 rounded-full bg-white/10 backdrop-blur-md border border-white/25 hover:bg-white/20 text-white transition-all active:scale-90 shadow-sm cursor-pointer"
+                      className="absolute bottom-3.5 right-3.5 z-20 p-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/25 hover:bg-white/20 text-white transition-all active:scale-90 shadow-sm cursor-pointer"
                       aria-label={mutedStates[reel.id] ? "Unmute video" : "Mute video"}
                     >
                       {mutedStates[reel.id] ?? true ? (
-                        <svg className="w-4 h-4 fill-none stroke-current stroke-[2]" viewBox="0 0 24 24">
+                        <svg className="w-3.5 h-3.5 fill-none stroke-current stroke-[2]" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 9.75L19.5 12m0 0l2.25 2.25M19.5 12l2.25-2.25M19.5 12l-2.25 2.25m-10.5-6L4.5 9H1.5v6h3l4.5 3.75V5.25z" />
                         </svg>
                       ) : (
-                        <svg className="w-4 h-4 fill-none stroke-current stroke-[2]" viewBox="0 0 24 24">
+                        <svg className="w-3.5 h-3.5 fill-none stroke-current stroke-[2]" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />
                         </svg>
                       )}
@@ -185,20 +185,20 @@ export default function HomeReels() {
                     href={`https://instagram.com/${reel.instagram.replace('@', '')}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 px-1 group cursor-pointer w-fit mx-auto md:mx-0"
+                    className="flex items-center gap-2 px-1 group cursor-pointer w-fit mx-auto md:mx-0"
                   >
                     <div className="relative overflow-hidden rounded-full p-[1px] bg-gradient-to-tr from-zinc-200 to-zinc-300 group-hover:from-zinc-400 group-hover:to-zinc-500 transition-all duration-300">
                       <img 
                         src={reel.avatar} 
                         alt={reel.name} 
-                        className="w-9 h-9 rounded-full object-cover bg-zinc-50 border border-white"
+                        className="w-7 h-7 rounded-full object-cover bg-zinc-50 border border-white"
                       />
                     </div>
                     <div className="flex flex-col min-w-0 text-left">
-                      <span className="text-sm font-semibold tracking-tight text-zinc-800 group-hover:text-black transition-colors truncate">
+                      <span className="text-xs font-semibold tracking-tight text-zinc-800 group-hover:text-black transition-colors truncate">
                         {reel.name}
                       </span>
-                      <span className="text-xs text-zinc-400 font-light tracking-wide transition-colors group-hover:text-zinc-500 truncate">
+                      <span className="text-[11px] text-zinc-400 font-light tracking-wide transition-colors group-hover:text-zinc-500 truncate">
                         {reel.instagram}
                       </span>
                     </div>
