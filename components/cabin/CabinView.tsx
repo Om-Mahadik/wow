@@ -15,9 +15,7 @@ export default function CabinView() {
       <section className="w-full">
         <CabinHero />
       </section>
-      <section className="w-full">
-        <CabinActions />
-      </section>
+
       <section className="w-full">
         <CabinOverview />
       </section>
