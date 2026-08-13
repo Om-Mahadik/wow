@@ -59,7 +59,7 @@ export default function InstallationStory() {
           className="aspect-[16/9] w-full overflow-hidden rounded-[36px] bg-zinc-50 border border-zinc-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)] relative group transform-gpu"
         >
           <img
-            src="/images/installation/1.jpeg" // Path for: Crane and flatbed transport on site
+            src="/images/Installation/1.jpeg" // Path for: Crane and flatbed transport on site
             alt="Transporting and rigging the cabins on site"
             className="w-full h-full object-cover group-hover:scale-[1.01] transition-transform duration-1000 ease-out will-change-transform"
             loading="lazy"
@@ -95,7 +95,7 @@ export default function InstallationStory() {
           className="aspect-[16/9] w-full overflow-hidden rounded-[36px] bg-zinc-50 border border-zinc-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)] relative group transform-gpu"
         >
           <img
-            src="/images/installation/2.jpeg" // Path for: Heavy crane lift in the rain/forest
+            src="/images/Installation/2.jpeg" // Path for: Heavy crane lift in the rain/forest
             alt="Heavy crane lifting cabins into position among trees"
             className="w-full h-full object-cover group-hover:scale-[1.01] transition-transform duration-1000 ease-out will-change-transform"
             loading="lazy"
