@@ -6,10 +6,11 @@ import InstallationStory from './InstallationStory';
 export default function AboutView() {
   return (
     <div className="space-y-0">
-        
+      
+         <AboutOverview />
         <InstallationStory />
         <Founders />
-        <AboutOverview />
+       
     </div>
   );
 }
