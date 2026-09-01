@@ -18,7 +18,7 @@ export default function MobileQuickActions() {
         damping: 18, 
         delay: 0.8 
       }}
-      className="block sm:hidden fixed right-0 bottom-24 z-50 group"
+      className="block sm:hidden fixed right-0 bottom-34 z-50 group"
     >
       {/* Container: Dark Floating Bar */}
       <div className="relative flex flex-col gap-1.5 p-2 rounded-l-3xl shadow-2xl overflow-hidden border-l border-y border-zinc-800/80 bg-zinc-950/95 backdrop-blur-md">
