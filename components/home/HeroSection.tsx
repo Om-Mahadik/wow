@@ -8,7 +8,6 @@ import { ArrowRight } from 'lucide-react';
 const heroImages = [
   '/images/drone/drone-1.jpg',
   '/images/drone/drone-3.jpg',
-  '/images/drone/drone-4.png',
 ];
 
 export default function HeroSection() {
