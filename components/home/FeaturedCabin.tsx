@@ -55,7 +55,7 @@ export default function FeaturedCabinSection({
               stay in style.
             </h2>
 
-            <p className="text-sm md:text-base text-zinc-600 font-light leading-relaxed max-w-xl">
+            <p className="text-sm md:text-lg text-zinc-600 font-light leading-relaxed max-w-xl">
               Our twin cabins are architecturally designed to offer complete
               privacy, untouched lake tranquility, and authentic timber design.
               Fully equipped for an immersive glamping experience near the city.
@@ -86,7 +86,7 @@ export default function FeaturedCabinSection({
 
           {/* 2. Embedded Airbnb Booking Bar */}
           <div className="flex flex-col space-y-3 pt-2">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-zinc-400 text-center md:text-left">
+            <span className="text-[14px] font-bold uppercase tracking-wider text-zinc-400 text-center md:text-left">
               Direct Airbnb Booking Portals
             </span>
 
@@ -119,7 +119,7 @@ export default function FeaturedCabinSection({
 
                   {/* Info Block */}
                   <div className="ml-3.5 flex-1 flex flex-col justify-center min-w-0 text-left">
-                    <span className="text-[9px] font-medium uppercase tracking-wider text-zinc-400">
+                    <span className="text-[11px] font-medium uppercase tracking-wider text-zinc-400">
                       Book Listing
                     </span>
 
@@ -129,7 +129,7 @@ export default function FeaturedCabinSection({
 
                     {/* Rating & Review */}
                     <div className="flex items-center gap-1.5 text-xs text-zinc-500 mt-0.5">
-                      <div className="flex items-center gap-1 text-zinc-900 font-semibold text-[11px]">
+                      <div className="flex items-center gap-1 text-zinc-900 font-semibold text-[14px]">
                         <StarIcon />
                         <span>{cabin.rating}</span>
                       </div>
