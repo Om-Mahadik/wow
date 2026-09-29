@@ -55,7 +55,7 @@ export default function FeaturedCabinSection({
               stay in style.
             </h2>
 
-            <p className="text-sm md:text-lg text-zinc-600 font-light leading-relaxed max-w-xl">
+            <p className="text-[18px] md:text-[18px] text-zinc-600 font-light leading-relaxed max-w-xl">
               Our twin cabins are architecturally designed to offer complete
               privacy, untouched lake tranquility, and authentic timber design.
               Fully equipped for an immersive glamping experience near the city.
@@ -64,7 +64,7 @@ export default function FeaturedCabinSection({
             <div className="pt-2">
               <Link
                 href="/cabin"
-                className="inline-flex items-center justify-center gap-3 py-3.5 px-6 bg-zinc-950 text-white rounded-2xl text-xs font-semibold tracking-wide transition-all hover:bg-zinc-800 active:scale-95 shadow-md group"
+                className="inline-flex items-center justify-center gap-3 py-3.5 px-6 bg-zinc-950 text-white rounded-2xl text-[15px] font-semibold tracking-wide transition-all hover:bg-zinc-800 active:scale-95 shadow-md group"
               >
                 <span>Explore Full Details</span>
 
