@@ -12,7 +12,7 @@ export default function IntroVideo() {
   const [muted, setMuted] = useState(true);
 
   // --------------------------------------------------
-  // CLOSE INTRO
+  // CLOSE INTROoo
   // --------------------------------------------------
 
   const closeIntro = () => {
