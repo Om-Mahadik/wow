@@ -2,6 +2,7 @@ import Navbar from "@/components/layout/Navbar";
 import NavbarMobile from "@/components/layout/NavbarMobile";
 import MobileQuickActions from "@/components/layout/MobileQuickActions";
 import Footer from "@/components/layout/Footer";
+import IntroVideo from "@/components/IntroVideo";
 import "./globals.css";
 
 import Providers from "@/components/Providers";
@@ -15,6 +16,7 @@ export default function RootLayout({
     <html lang="en" className="m-0 p-0 overflow-x-hidden">
       <body className="antialiased min-h-screen bg-white text-zinc-950 flex flex-col m-0 p-0 w-full overflow-x-hidden">
         {/* Floating Navbars */}
+        <IntroVideo />
         <Navbar />
         <NavbarMobile />
 
