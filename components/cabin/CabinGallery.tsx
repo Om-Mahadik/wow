@@ -1,11 +1,18 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
-import { motion, AnimatePresence, useMotionValue, useSpring } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useMotionValue,
+  useSpring,
+} from "framer-motion";
 import Image from "next/image";
 
 export default function CabinGallery() {
-  const [activeCategoryIndex, setActiveCategoryIndex] = useState<number | null>(null);
+  const [activeCategoryIndex, setActiveCategoryIndex] = useState<number | null>(
+    null,
+  );
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
 
   // Scroll indicator state for main gallery strip
@@ -22,7 +29,10 @@ export default function CabinGallery() {
   const springX = useSpring(mouseX, { stiffness: 400, damping: 28 });
   const springY = useSpring(mouseY, { stiffness: 400, damping: 28 });
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>, categoryName: string) => {
+  const handleMouseMove = (
+    e: React.MouseEvent<HTMLDivElement>,
+    categoryName: string,
+  ) => {
     const rect = e.currentTarget.getBoundingClientRect();
     mouseX.set(e.clientX - rect.left);
     mouseY.set(e.clientY - rect.top);
@@ -57,7 +67,7 @@ export default function CabinGallery() {
         { id: "deck-5", src: "/images/deck/deck-5.jpg" },
         { id: "deck-6", src: "/images/deck/deck-6.jpg" },
         { id: "deck-7", src: "/images/deck/deck-7.jpg" },
-        { id: "deck-8", src: "/images/deck/deck-8.heic" },
+        { id: "deck-8", src: "/images/deck/deck-8.jpg" },
       ],
     },
     {
@@ -100,17 +110,37 @@ export default function CabinGallery() {
       subtitle: "Spacious Parking for Your Vehicle",
       images: [
         { id: "parking-1", src: "/images/parking/parking-1.avif" },
-        { id: "parking-2", src: "/images/parking/parking-2.heic" },
+        { id: "parking-2", src: "/images/parking/parking-2.jpg" },
         { id: "parking-3", src: "/images/parking/parking-3.avif" },
+      ],
+    },
+    {
+      id: "drone",
+      category: "Drone View",
+      subtitle: "Aerial View of the Property and Surroundings",
+      images: [
+        { id: "drone-1", src: "/images/drone/drone-1.jpg" },
+        { id: "drone-2", src: "/images/drone/drone-2.jpg" },
+        { id: "drone-3", src: "/images/drone/drone-3.jpg" },
+        { id: "drone-4", src: "/images/drone/drone-4.png" },
       ],
     },
   ];
 
   // Flatten images mixed with category breakthrough break cards
-  const globalTimeline: Array<{ type: "header" | "image"; name: string; subtitle?: string; src?: string }> = [];
+  const globalTimeline: Array<{
+    type: "header" | "image";
+    name: string;
+    subtitle?: string;
+    src?: string;
+  }> = [];
 
   categories.forEach((cat) => {
-    globalTimeline.push({ type: "header", name: cat.category, subtitle: cat.subtitle });
+    globalTimeline.push({
+      type: "header",
+      name: cat.category,
+      subtitle: cat.subtitle,
+    });
     cat.images.forEach((img) => {
       globalTimeline.push({ type: "image", name: cat.category, src: img.src });
     });
@@ -136,7 +166,7 @@ export default function CabinGallery() {
     if (activeCategoryIndex !== null && scrollContainerRef.current) {
       const targetCategoryName = categories[activeCategoryIndex].category;
       const targetIndex = globalTimeline.findIndex(
-        (item) => item.type === "header" && item.name === targetCategoryName
+        (item) => item.type === "header" && item.name === targetCategoryName,
       );
 
       if (targetIndex !== -1) {
@@ -144,7 +174,9 @@ export default function CabinGallery() {
           const container = scrollContainerRef.current;
           if (container) {
             // Offset by +1 to account for the before: pseudo element child
-            const targetChild = container.children[targetIndex + 1] as HTMLElement;
+            const targetChild = container.children[
+              targetIndex + 1
+            ] as HTMLElement;
             if (targetChild) {
               container.scrollTo({
                 left: targetChild.offsetLeft - 40,
@@ -161,7 +193,10 @@ export default function CabinGallery() {
   const scrollGallery = (direction: "left" | "right") => {
     if (galleryStripRef.current) {
       const scrollAmount = direction === "left" ? -350 : 350;
-      galleryStripRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+      galleryStripRef.current.scrollBy({
+        left: scrollAmount,
+        behavior: "smooth",
+      });
     }
   };
 
@@ -169,7 +204,10 @@ export default function CabinGallery() {
   const scrollTimeline = (direction: "left" | "right") => {
     if (scrollContainerRef.current) {
       const scrollAmount = direction === "left" ? -500 : 500;
-      scrollContainerRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+      scrollContainerRef.current.scrollBy({
+        left: scrollAmount,
+        behavior: "smooth",
+      });
     }
   };
 
@@ -209,7 +247,10 @@ export default function CabinGallery() {
       >
         {/* Gallery Title aligned with layout gutter */}
         <div className="w-full overflow-hidden py-0.5 px-4 md:px-12 lg:px-16 flex items-center justify-between">
-          <motion.h2 variants={itemVariants} className="text-2xl font-bold tracking-tight text-zinc-900">
+          <motion.h2
+            variants={itemVariants}
+            className="text-2xl font-bold tracking-tight text-zinc-900"
+          >
             Gallery
           </motion.h2>
         </div>
@@ -254,7 +295,9 @@ export default function CabinGallery() {
 
                   {/* Mobile Tap Badge */}
                   <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5 rounded-full bg-black/40 backdrop-blur-md px-3 py-1 border border-white/10 text-white md:hidden">
-                    <span className="text-[10px] font-medium tracking-wide">Tap to view</span>
+                    <span className="text-[10px] font-medium tracking-wide">
+                      Tap to view
+                    </span>
                   </div>
 
                   {/* Desktop Mouse Pill */}
@@ -278,16 +321,21 @@ export default function CabinGallery() {
                     )}
                   </AnimatePresence>
                 </div>
+
                 <div className="flex flex-col px-1">
-                  <span className="text-base font-semibold tracking-tight text-zinc-900">{cat.category}</span>
-                  <span className="text-sm text-zinc-500 font-light tracking-wide mt-0.5">({cat.images.length} photos)</span>
+                  <span className="text-base font-semibold tracking-tight text-zinc-900">
+                    {cat.category}
+                  </span>
+                  <span className="text-sm text-zinc-500 font-light tracking-wide mt-0.5">
+                    ({cat.images.length} photos)
+                  </span>
                 </div>
               </motion.div>
             ))}
           </div>
 
           {/* Desktop Right Floating Arrow */}
-          {canScrollGalleryRight && (
+          {true && (
             <button
               onClick={() => scrollGallery("right")}
               aria-label="Scroll Gallery Right"
@@ -309,19 +357,22 @@ export default function CabinGallery() {
             className="fixed inset-0 z-50 bg-zinc-950 flex flex-col justify-between p-6 md:p-10 transform-gpu overflow-hidden"
           >
             {/* Clickable Backdrop Mask */}
-            <div 
-              className="absolute inset-0 z-0" 
+            <div
+              className="absolute inset-0 z-0"
               onClick={() => setActiveCategoryIndex(null)}
             />
 
             {/* Modal Control Header */}
             <div className="w-full flex justify-between items-center text-white relative z-10 select-none">
               <div>
-                <h3 className="text-xl font-bold tracking-tight">Wind over Waters</h3>
+                <h3 className="text-xl font-bold tracking-tight">
+                  Wind over Waters
+                </h3>
                 <p className="text-xs text-zinc-400 font-light tracking-wide mt-0.5">
                   Immersive Crossover Walkthrough Showcase
                 </p>
               </div>
+
               <button
                 onClick={() => setActiveCategoryIndex(null)}
                 className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-colors flex items-center justify-center font-bold text-sm cursor-pointer"
@@ -338,6 +389,7 @@ export default function CabinGallery() {
             >
               ←
             </button>
+
             <button
               onClick={() => scrollTimeline("right")}
               aria-label="Scroll Right"
@@ -361,15 +413,19 @@ export default function CabinGallery() {
                     <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-zinc-500 mb-2">
                       Entering Space
                     </span>
+
                     <h4 className="text-3xl md:text-4xl font-black text-white tracking-tight">
                       {item.name}
                     </h4>
+
                     {item.subtitle && (
                       <p className="text-xs text-zinc-400 font-light tracking-wide mt-2">
                         {item.subtitle}
                       </p>
                     )}
+
                     <div className="w-8 h-[2px] bg-white/30 my-4" />
+
                     <span className="text-xs text-zinc-400 font-light tracking-wide flex items-center gap-2">
                       Swipe across space <span className="text-sm">→</span>
                     </span>
@@ -388,11 +444,12 @@ export default function CabinGallery() {
                       className="object-cover md:object-contain pointer-events-none"
                       priority={i < 6}
                     />
+
                     <div className="absolute bottom-4 left-4 bg-zinc-900/80 backdrop-blur-md border border-white/10 text-white font-light text-xs tracking-wider px-3 py-1.5 rounded-full z-10">
                       {item.name}
                     </div>
                   </div>
-                )
+                ),
               )}
             </div>
 
