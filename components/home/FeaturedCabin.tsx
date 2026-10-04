@@ -21,27 +21,6 @@ export default function FeaturedCabinSection({
 }: FeaturedCabinProps) {
   const formattedPrice = new Intl.NumberFormat("en-IN").format(pricePerNight);
 
-  const airbnbCabins = [
-    {
-      name: "WOW Cabin 01",
-      location: "Velhe, Maharashtra",
-      rating: "4.92",
-      reviews: "43",
-      image: "/images/deck-1.jpg",
-      logo: "/others/airbnb-logo.svg",
-      url: "https://www.airbnb.co.in/rooms/1232353131595460643",
-    },
-    {
-      name: "WOW Cabin 02",
-      location: "Velhe, Maharashtra",
-      rating: "4.89",
-      reviews: "69",
-      image: "/images/deck-2.jpg",
-      logo: "/others/airbnb-logo.svg",
-      url: "https://www.airbnb.co.in/rooms/1233873689915292788",
-    },
-  ];
-
   return (
     <div className="w-full bg-white py-16 md:py-20 select-none">
       {/* Container set strictly to 80% of screen viewport width */}
@@ -52,13 +31,15 @@ export default function FeaturedCabinSection({
           <div className="flex flex-col space-y-4 items-center text-center md:items-start md:text-left">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-950 leading-[1.1]">
               Escape to nature, <br />
-              stay in style.
+              Glamping Style
             </h2>
 
             <p className="text-[18px] md:text-[18px] text-zinc-600 font-light leading-relaxed max-w-xl">
-              Our twin cabins are architecturally designed to offer complete
-              privacy, untouched lake tranquility, and authentic timber design.
-              Fully equipped for an immersive glamping experience near the city.
+              Guest-Driven Glamping: Wind Over Water offers a peaceful,
+              independent glamping experience where you can enjoy nature at your
+              own pace. There are no regular hospitality or room-service
+              facilities, making it ideal for guests looking for a private,
+              self-managed getaway.
             </p>
 
             <div className="pt-2">
@@ -81,84 +62,6 @@ export default function FeaturedCabinSection({
                   <path d="m12 5 7 7-7 7" />
                 </svg>
               </Link>
-            </div>
-          </div>
-
-          {/* 2. Embedded Airbnb Booking Bar */}
-          <div className="flex flex-col space-y-3 pt-2">
-            <span className="text-[14px] font-bold uppercase tracking-wider text-zinc-400 text-center md:text-left">
-              Direct Airbnb Booking Portals
-            </span>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-              {airbnbCabins.map((cabin, i) => (
-                <a
-                  key={i}
-                  href={cabin.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative flex items-center p-3.5 rounded-[22px] bg-white border border-zinc-200/80 hover:border-zinc-300 hover:shadow-[0_10px_28px_-10px_rgba(0,0,0,0.08)] transition-all duration-300"
-                >
-                  {/* Small Square Thumbnail */}
-                  <div className="relative w-16 h-16 rounded-[16px] overflow-hidden shrink-0 bg-zinc-100 border border-zinc-100">
-                    <img
-                      src={cabin.image}
-                      alt={cabin.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-
-                    {/* Airbnb Logo */}
-                    <div className="absolute top-1 left-1 w-6 h-6 rounded-full bg-white flex items-center justify-center shadow-sm p-1">
-                      <img
-                        src={cabin.logo}
-                        alt="Airbnb"
-                        className="w-full h-full object-contain"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Info Block */}
-                  <div className="ml-3.5 flex-1 flex flex-col justify-center min-w-0 text-left">
-                    <span className="text-[11px] font-medium uppercase tracking-wider text-zinc-400">
-                      Book Listing
-                    </span>
-
-                    <h4 className="text-sm font-semibold text-zinc-950 tracking-tight mt-0.5 group-hover:text-zinc-600 transition-colors truncate">
-                      {cabin.name}
-                    </h4>
-
-                    {/* Rating & Review */}
-                    <div className="flex items-center gap-1.5 text-xs text-zinc-500 mt-0.5">
-                      <div className="flex items-center gap-1 text-zinc-900 font-semibold text-[14px]">
-                        <StarIcon />
-                        <span>{cabin.rating}</span>
-                      </div>
-
-                      <span className="text-zinc-300">•</span>
-
-                      <span className="text-zinc-400 font-light text-[11px]">
-                        ({cabin.reviews})
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Arrow Indicator */}
-                  <div className="w-7 h-7 rounded-full bg-zinc-50 border border-zinc-200/80 flex items-center justify-center text-zinc-700 group-hover:bg-zinc-950 group-hover:text-white group-hover:border-zinc-950 transition-all duration-300 shrink-0 ml-1">
-                    <svg
-                      className="w-3 h-3"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M5 12h14" />
-                      <path d="m12 5 7 7-7 7" />
-                    </svg>
-                  </div>
-                </a>
-              ))}
             </div>
           </div>
         </div>

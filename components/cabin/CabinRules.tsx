@@ -33,7 +33,7 @@ export default function CabinRules() {
     },
     {
       num: "7",
-      text: "Check-in from 1:00 PM to 7:00 PM, checkout by 11:00 AM. Up to 3 guests per cabin. This is a self-check-in property, so you'll have complete privacy — our team is just a call away if you need anything.",
+      text: "Check-in from 1:00 PM to 7:00 PM, checkout by 11:00 AM. Up to 3 guests per cabin are allowed 4th one is chargeable. This is a self-check-in property, so you'll have complete privacy — our team is just a call away if you need anything.",
     },
   ];
 

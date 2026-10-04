@@ -9,7 +9,7 @@ export default function CabinOverview() {
   const smoothEase = [0.25, 1, 0.5, 1] as const;
 
   const textString =
-    "The wind, the waters & the forest await to give you a serene experience at the Wind over Waters. This is a glamping property with 2 Coons, aka cabins.";
+    "Wind Over Water offers a peaceful, independent glamping experience where you can enjoy nature at your own pace. There are no regular hospitality or room-service facilities, making it ideal for guests looking for a private, self-managed getaway.";
 
   const words = textString.split(" ");
 
@@ -17,16 +17,16 @@ export default function CabinOverview() {
     {
       id: "cabin1",
       name: "WOW Cabin 01",
-      rating: "4.92",
-      reviews: "128",
+      rating: "4.77",
+      reviews: "56",
       image: "/images/deck-1.jpg",
       url: "https://www.airbnb.co.in/rooms/1232353131595460643",
     },
     {
       id: "cabin2",
       name: "WOW Cabin 02",
-      rating: "4.89",
-      reviews: "48",
+      rating: "4.7",
+      reviews: "82",
       image: "/images/deck-2.jpg",
       url: "https://www.airbnb.co.in/rooms/1233873689915292788",
     },
@@ -209,7 +209,7 @@ export default function CabinOverview() {
               </svg>
 
               <span className="text-sm font-medium tracking-wide">
-                4 Guests
+                3 Guests
               </span>
             </motion.div>
           </motion.div>
