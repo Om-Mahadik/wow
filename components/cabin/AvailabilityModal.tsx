@@ -577,7 +577,7 @@ export default function AvailabilityModal({
             <div className="flex shrink-0 items-center justify-between border-b border-zinc-100 pb-3">
               <div>
                 <h3 className="text-lg font-bold tracking-tight text-zinc-900">
-                  Select Dates
+                  Select Datessss
                 </h3>
 
                 <p className="mt-0.5 text-xs font-light text-zinc-500">

@@ -266,6 +266,12 @@ export default function CabinActions({
 
   const isPastDate = (dateString: string) => parseDate(dateString) < today;
 
+  const isLastMinuteCheckIn = useMemo(() => {
+    if (!checkIn) return false;
+
+    return checkIn === formatDate(today);
+  }, [checkIn, today]);
+
   const isDateInRange = (dateString: string) => {
     if (!checkIn || !checkOut) return false;
 
@@ -446,6 +452,36 @@ export default function CabinActions({
                         </svg>
                       </a>
                     </div>
+
+                    {isLastMinuteCheckIn && (
+                      <div className="pt-2 border-t border-amber-200/70 flex items-start gap-2">
+                        <svg
+                          className="w-4 h-4 text-amber-600 shrink-0 mt-0.5"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1.8"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <circle cx="12" cy="12" r="10" />
+                          <path d="M12 8v4" />
+                          <path d="M12 16h.01" />
+                        </svg>
+
+                        <div>
+                          <p className="text-[11px] font-semibold text-amber-900">
+                            Last-minute check-in
+                          </p>
+
+                          <p className="text-[11px] leading-relaxed text-amber-800 mt-0.5">
+                            Your selected check-in is today, which is less than
+                            24 hours away. Please confirm availability with the
+                            host before booking.
+                          </p>
+                        </div>
+                      </div>
+                    )}
 
                     {freeCancellationText && (
                       <div className="flex items-center justify-center gap-1.5 px-2">
@@ -707,7 +743,9 @@ export default function CabinActions({
                                     : past || invalidRangeDate
                                       ? "text-zinc-300 cursor-not-allowed"
                                       : isSelected
-                                        ? "bg-emerald-600 text-white font-semibold shadow-[0_2px_8px_rgba(5,150,105,0.25)] scale-95 ring-2 ring-emerald-100"
+                                        ? isLastMinuteCheckIn && isCheckIn
+                                          ? "bg-amber-400 text-amber-950 font-semibold shadow-[0_2px_8px_rgba(245,158,11,0.25)] scale-95 ring-2 ring-amber-100"
+                                          : "bg-emerald-600 text-white font-semibold shadow-[0_2px_8px_rgba(5,150,105,0.25)] scale-95 ring-2 ring-emerald-100"
                                         : inRange
                                           ? "text-emerald-900 font-semibold hover:bg-emerald-100 cursor-pointer"
                                           : "text-zinc-700 hover:bg-zinc-100 cursor-pointer"
@@ -726,6 +764,34 @@ export default function CabinActions({
 
               {/* Bottom Summary */}
               <div className="pt-2 border-t border-zinc-100 flex flex-col gap-2.5">
+                {isLastMinuteCheckIn && (
+                  <div className="flex items-start gap-2.5 rounded-xl border border-amber-200 bg-amber-50 p-3">
+                    <svg
+                      className="h-5 w-5 shrink-0 text-amber-600"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <circle cx="12" cy="12" r="10" />
+                      <path d="M12 8v4" />
+                      <path d="M12 16h.01" />
+                    </svg>
+
+                    <div>
+                      <p className="text-xs font-semibold text-amber-900">
+                        Same-day check-in
+                      </p>
+
+                      <p className="mt-1 text-xs leading-relaxed text-amber-800">
+                        Your check-in is within the next 24 hours. You’ll
+                        receive a full refund if your booking isn’t confirmed.
+                      </p>
+                    </div>
+                  </div>
+                )}
                 <div className="flex flex-col gap-1 bg-[#fafafa] rounded-[18px] px-4 py-2.5 border border-zinc-200/60">
                   <div className="flex items-center justify-between">
                     <div>
