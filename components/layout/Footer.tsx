@@ -86,7 +86,7 @@ export default function Footer() {
                 <WhatsappIcon />
               </a>
               <a
-                href="mailto:enquiry@windoverwaters.com"
+                href="mailto:coonsatwow@gmail.com"
                 className="hover:text-white transition-colors p-1"
                 aria-label="Email Us"
               >
